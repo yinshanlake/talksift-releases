@@ -498,24 +498,14 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <div class="section-divider"></div>
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🧹</div>
-        <h3 data-i18n="features.filler.title">Filler & Ramble Removal</h3>
-        <p data-i18n="features.filler.desc">Ums, uhs, "like", "you know" — gone. Repetitions and tangents — trimmed. Only your actual point survives.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔄</div>
-        <h3 data-i18n="features.correction.title">Correction Detection</h3>
-        <p data-i18n="features.correction.desc">"Make it Monday — wait, no, Tuesday." TalkSift keeps Tuesday. It tracks when you change your mind and keeps the final intent.</p>
-      </div>
-      <div class="feature-card">
         <div class="feature-icon">✨</div>
         <h3 data-i18n="features.ai.title">AI Distillation</h3>
         <p data-i18n="features.ai.desc">Beyond grammar fixes. TalkSift restructures your rambling thoughts into clear, well-written text that sounds like you typed it carefully.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌏</div>
-        <h3 data-i18n="features.lang.title">English & Chinese</h3>
-        <p data-i18n="features.lang.desc">Speak in English, Chinese, or mix both. TalkSift handles multilingual input natively — no switching modes.</p>
+        <h3 data-i18n="features.lang.title">Multilingual Support</h3>
+        <p data-i18n="features.lang.desc">English and Chinese supported today. More languages coming soon. Mix languages freely — TalkSift handles it natively.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
@@ -595,7 +585,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.monthly.f3">Priority processing</li>
           <li data-i18n="pricing.monthly.f4">Direct app integration</li>
         </ul>
-        <a href="#" class="btn-outline paddle_button" data-price-id="pri_01kjmrmm580rfqnqs1r47m1vpr" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;">Subscribe</a>
+        <a href="#" class="btn-outline paddle_button" data-price-id="pri_01kjmrmm580rfqnqs1r47m1vpr" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;" data-i18n="pricing.subscribe">Subscribe</a>
       </div>
       <div class="price-card featured" data-popular="POPULAR">
         <h3 data-i18n="pricing.annual.name">Pro Annual</h3>
@@ -607,7 +597,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.annual.f3">Priority support</li>
           <li data-i18n="pricing.annual.f4">Early access to new features</li>
         </ul>
-        <a href="#" class="btn-primary paddle_button" data-price-id="pri_01kjmrmn72w66qgxb9m2be9mwq" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;">Subscribe</a>
+        <a href="#" class="btn-primary paddle_button" data-price-id="pri_01kjmrmn72w66qgxb9m2be9mwq" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;" data-i18n="pricing.subscribe">Subscribe</a>
       </div>
       </div>
     </div>
@@ -822,8 +812,8 @@ const i18n = {
     'features.correction.desc': '"Make it Monday — wait, no, Tuesday." TalkSift keeps Tuesday. It tracks when you change your mind and keeps the final intent.',
     'features.ai.title': 'AI Distillation',
     'features.ai.desc': 'Beyond grammar fixes. TalkSift restructures your rambling thoughts into clear, well-written text that sounds like you typed it carefully.',
-    'features.lang.title': 'English & Chinese',
-    'features.lang.desc': 'Speak in English, Chinese, or mix both. TalkSift handles multilingual input natively — no switching modes.',
+    'features.lang.title': 'Multilingual Support',
+    'features.lang.desc': 'English and Chinese supported today. More languages coming soon. Mix languages freely — TalkSift handles it natively.',
     'features.privacy.title': 'Voice Stays On Your Device',
     'features.privacy.desc': 'Speech recognition runs 100% locally on your Mac. Your audio is never uploaded anywhere.<br><span style="font-size:0.8rem; color:var(--text-muted);">Text polishing uses a cloud AI service (DeepSeek) via encrypted connection. No data is stored or used for training.</span>',
     'features.instant.title': 'Instant Processing',
@@ -857,7 +847,7 @@ const i18n = {
     'pricing.monthly.f2': 'Custom tone & style profiles',
     'pricing.monthly.f3': 'Priority processing',
     'pricing.monthly.f4': 'Direct app integration',
-    'pricing.comingSoon': 'Coming Soon',
+    'pricing.subscribe': 'Subscribe',
     'pricing.annual.name': 'Pro Annual',
     'pricing.annual.price': '$3 <span>/ month</span>',
     'pricing.annual.note': '$36/year — <span class="price-save">Save 63%</span>',
@@ -923,8 +913,8 @@ const i18n = {
     'features.correction.desc': '"约周一——不对，周二。" TalkSift 保留周二。它能追踪你改主意的地方，只保留最终意图。',
     'features.ai.title': 'AI 提炼',
     'features.ai.desc': '不只是语法修正。TalkSift 把你零散的想法重新组织成清晰、流畅的文字，就像你认真打出来的一样。',
-    'features.lang.title': '中英双语',
-    'features.lang.desc': '说英文、中文，或者中英混用都行。TalkSift 原生支持多语言——无需切换模式。',
+    'features.lang.title': '多语言支持',
+    'features.lang.desc': '目前支持中文和英文，更多语言即将推出。可以自由混合语言——TalkSift 原生处理。',
     'features.privacy.title': '语音不离开你的设备',
     'features.privacy.desc': '语音识别 100% 在你的 Mac 本地运行，音频永远不会上传。<br><span style="font-size:0.8rem; color:var(--text-muted);">文字润色使用云端 AI 服务（DeepSeek），通过加密连接传输。不存储数据，不用于训练。</span>',
     'features.instant.title': '即时处理',
@@ -958,7 +948,7 @@ const i18n = {
     'pricing.monthly.f2': '自定义语气和风格',
     'pricing.monthly.f3': '优先处理',
     'pricing.monthly.f4': '直接应用集成',
-    'pricing.comingSoon': '即将推出',
+    'pricing.subscribe': '订阅',
     'pricing.annual.name': '专业年付',
     'pricing.annual.price': '$3 <span>/ 月</span>',
     'pricing.annual.note': '$36/年 — <span class="price-save">省 63%</span>',
