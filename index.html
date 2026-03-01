@@ -627,21 +627,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">2</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Double-click to open — then allow it</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">macOS will show a warning. Click <strong>"Done"</strong> to close it. Then:</p>
-          <div style="margin-top:12px; display:flex; flex-direction:column; gap:12px;">
-            <!-- Mock: System Settings -->
-            <div style="background:#2a2a2e; border-radius:12px; padding:20px; max-width:400px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
-              <p style="color:#999; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">⚙️ System Settings → Privacy & Security</p>
-              <div style="background:#3a3a3e; border-radius:8px; padding:14px; display:flex; justify-content:space-between; align-items:center;">
-                <div>
-                  <p style="color:#fff; font-size:13px; font-weight:500;">"TalkSift" was blocked from opening</p>
-                </div>
-                <span style="background:var(--accent); color:#fff; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; white-space:nowrap;">👆 Open Anyway</span>
-              </div>
-            </div>
-          </div>
-          <p style="color:var(--text-muted); font-size:0.85rem; line-height:1.6; margin-top:10px;">Open <strong>System Settings → Privacy & Security</strong>, scroll down, and click <strong>"Open Anyway"</strong>. Enter your password to confirm.</p>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Try to open TalkSift</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">Double-click <strong>TalkSift</strong> in your Applications folder. macOS will show a warning — this is normal. Click <strong>"Done"</strong> to close it. (Don't worry, we'll fix this in the next step.)</p>
         </div>
       </div>
 
@@ -649,8 +636,63 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">3</div>
         <div>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Open System Settings</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+            Click the <strong>Apple menu </strong> in the top-left corner of your screen, then click <strong>"System Settings"</strong>.
+          </p>
+          <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:260px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+            <p style="color:#fff; font-size:13px; line-height:2;">
+               About This Mac<br>
+              <span style="background:#3d8b6e; padding:2px 8px; border-radius:4px; font-weight:600;">⚙️ System Settings...</span><br>
+               App Store...<br>
+               Recent Items
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">4</div>
+        <div>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Go to Privacy & Security</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+            In the left sidebar, scroll down and click <strong>"Privacy & Security"</strong>.
+          </p>
+          <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:240px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+            <p style="color:#999; font-size:12px; line-height:2.2;">
+              General<br>Appearance<br>...<br>
+              <span style="background:#3d8b6e; color:#fff; padding:2px 8px; border-radius:4px; font-weight:600;">🔒 Privacy & Security</span><br>
+              Desktop & Dock
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">5</div>
+        <div>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Click "Open Anyway"</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+            Scroll down on the right side. You'll see a message saying <strong>"TalkSift" was blocked</strong>. Click the <strong>"Open Anyway"</strong> button. Enter your Mac password when asked.
+          </p>
+          <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:420px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+            <p style="color:#999; font-size:11px; margin-bottom:10px;">SECURITY</p>
+            <div style="background:#3a3a3e; border-radius:8px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+              <p style="color:#fff; font-size:13px;">"TalkSift" was blocked from opening</p>
+              <span style="background:var(--accent); color:#fff; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; white-space:nowrap;">👆 Open Anyway</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div style="display:flex; gap:20px; align-items:flex-start;">
+        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">✓</div>
+        <div>
           <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">You're all set!</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">TalkSift will open normally. You only need to do this once — next time just double-click.</p>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">TalkSift will open. You only need to do this once — next time just double-click to open.</p>
         </div>
       </div>
 
