@@ -390,6 +390,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 }
 </style>
 </head>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <body>
 
 <!-- Nav -->
@@ -569,7 +570,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.monthly.f3">Priority processing</li>
           <li data-i18n="pricing.monthly.f4">Direct app integration</li>
         </ul>
-        <a href="#" class="btn-outline" data-i18n="pricing.comingSoon">Coming Soon</a>
+        <a href="#" class="btn-outline paddle_button" data-price-id="pri_01kjmrmm580rfqnqs1r47m1vpr" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;">Subscribe</a>
       </div>
       <div class="price-card featured" data-popular="POPULAR">
         <h3 data-i18n="pricing.annual.name">Pro Annual</h3>
@@ -581,7 +582,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.annual.f3">Priority support</li>
           <li data-i18n="pricing.annual.f4">Early access to new features</li>
         </ul>
-        <a href="#" class="btn-primary" data-i18n="pricing.comingSoon">Coming Soon</a>
+        <a href="#" class="btn-primary paddle_button" data-price-id="pri_01kjmrmn72w66qgxb9m2be9mwq" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;">Subscribe</a>
       </div>
       </div>
     </div>
