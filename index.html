@@ -538,7 +538,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <p class="section-label">Pricing</p>
     <h2 class="section-title">Start free. Upgrade when you're hooked.</h2>
     <p class="section-sub">Simple pricing. No hidden fees.</p>
-    <div class="pricing-grid">
+    <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr); max-width:860px;">
       <div class="price-card">
         <h3>Free</h3>
         <div class="price-amount">$0</div>
@@ -549,19 +549,32 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li>Filler removal + corrections</li>
           <li>Clipboard output</li>
         </ul>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-outline" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">Download for Mac</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-outline" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">Download Free</a>
       </div>
-      <div class="price-card featured">
-        <h3>Pro</h3>
-        <div class="price-amount">$6 <span>/ month</span></div>
-        <p class="price-note">$72/year billed annually <span class="price-save">Save 60%</span><br>$15/mo billed monthly</p>
+      <div class="price-card">
+        <h3>Pro Monthly</h3>
+        <div class="price-amount">$15 <span>/ month</span></div>
+        <p class="price-note">Cancel anytime</p>
         <ul class="price-features">
           <li>Unlimited distillations</li>
           <li>Custom tone & style profiles</li>
           <li>Priority processing</li>
           <li>Direct app integration</li>
         </ul>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-primary" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">Download for Mac</a>
+        <a href="#" class="btn-outline">Coming Soon</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Pro Annual</h3>
+        <div class="price-amount">$6 <span>/ month</span></div>
+        <p class="price-note">$72/year — <span class="price-save">Save 60%</span></p>
+        <ul class="price-features">
+          <li>Everything in Pro Monthly</li>
+          <li>2 months free</li>
+          <li>Priority support</li>
+          <li>Early access to new features</li>
+        </ul>
+        <a href="#" class="btn-primary">Coming Soon</a>
+      </div>
       </div>
     </div>
   </div>
