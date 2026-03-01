@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalkSift — Say it messy. Get it clean.</title>
+<meta name="description" content="TalkSift turns your rambling voice into polished text. Not transcription — distillation. For macOS.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #fafaf9;
+  --bg-warm: #f5f4f1;
+  --surface: #ffffff;
+  --surface-2: #f0efec;
+  --border: #e5e3de;
+  --border-light: #eeedea;
+  --text: #1a1a1a;
+  --text-secondary: #374151;
+  --text-muted: #6b6b6b;
+  --accent: #3d8b6e;
+  --accent-light: #4a9e7e;
+  --accent-subtle: rgba(61, 139, 110, 0.08);
+  --accent-border: rgba(61, 139, 110, 0.2);
+  --accent-bg: rgba(61, 139, 110, 0.10);
+  --coral: #d4836b;
+  --coral-subtle: rgba(212, 131, 107, 0.08);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Sans', 'Inter', -apple-system, sans-serif;
+  color: var(--text);
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+/* ── Nav ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(250, 250, 249, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+}
+nav .container {
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+}
+.logo {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 800; font-size: 1.2rem; letter-spacing: -0.03em; color: var(--text);
+}
+.logo span { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a.nav-link {
+  font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a.nav-link:hover { color: var(--text); text-decoration: none; }
+nav a.nav-cta {
+  background: var(--accent); color: #fff; padding: 8px 18px;
+  border-radius: 10px; font-weight: 600; font-size: 0.85rem;
+  text-decoration: none; transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(61, 139, 110, 0.3);
+}
+nav a.nav-cta:hover { background: var(--accent-light); text-decoration: none; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(61, 139, 110, 0.3); }
+
+/* ── Hero ── */
+.hero {
+  padding: 150px 0 80px; text-align: center;
+}
+.hero h1 {
+  font-size: clamp(2.8rem, 6.5vw, 4.2rem); font-weight: 800;
+  letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 24px;
+  color: var(--text);
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--accent) 0%, #5cb896 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p.sub {
+  font-size: clamp(1.05rem, 2.2vw, 1.2rem); color: var(--text-muted);
+  max-width: 520px; margin: 0 auto 44px; line-height: 1.7;
+  font-weight: 400;
+}
+.hero-badge {
+  display: inline-block; margin-top: 16px; font-size: 0.8rem;
+  color: var(--text-muted); letter-spacing: 0.01em;
+}
+
+/* ── Hero buttons ── */
+.hero-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+/* ── Waitlist form (Windows) ── */
+.waitlist-inline {
+  display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+  max-width: 440px; margin: 16px auto 0;
+}
+.waitlist-inline input {
+  flex: 1; min-width: 200px; padding: 11px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text); font-size: 0.9rem; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+.waitlist-inline input::placeholder { color: #aaa; }
+.waitlist-inline input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-subtle);
+}
+.waitlist-inline button { white-space: nowrap; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: #fff; padding: 14px 32px;
+  border-radius: 12px; font-weight: 600; font-size: 15px;
+  border: none; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none; font-family: inherit;
+  box-shadow: 0 2px 8px rgba(61, 139, 110, 0.25);
+}
+.btn-primary:hover {
+  background: var(--accent-light); transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(61, 139, 110, 0.35);
+  text-decoration: none;
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface); color: var(--text-secondary); padding: 14px 32px;
+  border-radius: 12px; font-weight: 600; font-size: 15px;
+  border: none; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none; font-family: inherit;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.btn-secondary:hover {
+  background: var(--bg-warm); transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  text-decoration: none;
+}
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface); color: var(--text); padding: 14px 32px;
+  border-radius: 12px; font-weight: 600; font-size: 15px;
+  border: none; cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none; font-family: inherit;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.btn-outline:hover {
+  background: var(--bg-warm); transform: translateY(-1px);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  text-decoration: none;
+}
+.btn-sm { padding: 10px 20px; font-size: 0.85rem; }
+.waitlist-msg {
+  text-align: center; margin-top: 12px; font-size: 0.9rem;
+  color: var(--accent); min-height: 1.4em; font-weight: 500;
+}
+
+/* ── Demo ── */
+.demo { padding: 20px 0 120px; }
+.demo-box {
+  max-width: 720px; margin: 0 auto; aspect-ratio: 16/9;
+  background: var(--surface); border: none;
+  border-radius: 16px; display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); font-size: 0.95rem; position: relative; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 30px rgba(0,0,0,0.04);
+}
+.demo-box::before {
+  content: '▶  Demo coming soon'; font-size: 1rem; color: var(--text-muted);
+}
+
+/* ── Section styling ── */
+section { padding: 120px 0; }
+.section-label {
+  text-transform: uppercase; font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 3px; color: var(--accent); margin-bottom: 14px;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+.section-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800;
+  letter-spacing: -0.03em; text-align: center; margin-bottom: 14px;
+  color: var(--text);
+}
+.section-sub {
+  text-align: center; color: var(--text-muted); max-width: 500px;
+  margin: 0 auto 60px; font-size: 1rem; line-height: 1.7;
+}
+.section-divider {
+  width: 60px; height: 3px; background: var(--accent); opacity: 0.3;
+  border-radius: 2px; margin: 0 auto 60px;
+}
+
+/* ── Features ── */
+.features-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.feature-card {
+  background: var(--surface); border: none;
+  border-radius: 16px; padding: 32px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.feature-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transform: scale(1.01);
+}
+.feature-icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 16px;
+  background: var(--accent-bg); color: var(--accent);
+}
+.feature-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;
+  color: var(--text); letter-spacing: -0.02em;
+}
+.feature-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+/* ── How it works ── */
+.how-section { background: var(--bg-warm); }
+.steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 40px; counter-reset: step;
+}
+.step { text-align: center; counter-increment: step; }
+.step-number {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--accent-subtle);
+  color: var(--accent); font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'DM Sans', sans-serif;
+}
+.step h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--text);
+}
+.step p { color: var(--text-muted); font-size: 0.9rem; max-width: 260px; margin: 0 auto; line-height: 1.7; }
+
+/* ── Pricing ── */
+.pricing-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 20px; max-width: 640px; margin: 0 auto;
+}
+.price-card {
+  background: var(--surface); border: none;
+  border-radius: 16px; padding: 34px 30px; position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.price-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transform: scale(1.01);
+}
+.price-card.featured {
+  border: 2px solid var(--accent);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px var(--accent-border);
+}
+.price-card.featured:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px var(--accent-border);
+}
+.price-card.featured::after {
+  content: 'POPULAR'; position: absolute; top: -11px; right: 20px;
+  background: var(--accent); color: #fff; font-size: 0.65rem;
+  font-weight: 700; padding: 3px 10px; border-radius: 5px;
+  letter-spacing: 0.06em;
+}
+.price-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; color: var(--text);
+}
+.price-amount {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 2.4rem; font-weight: 800; margin-bottom: 4px;
+  color: var(--text); letter-spacing: -0.02em;
+}
+.price-amount span { font-size: 0.95rem; color: var(--text-muted); font-weight: 400; }
+.price-note { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 22px; }
+.price-save {
+  display: inline-block; background: rgba(61, 139, 110, 0.1); color: var(--accent);
+  font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 5px;
+  margin-left: 8px; letter-spacing: 0.02em; vertical-align: middle;
+}
+.price-features { list-style: none; margin-bottom: 26px; }
+.price-features li { padding: 5px 0; font-size: 0.9rem; color: var(--text-secondary); }
+.price-features li::before { content: '✓ '; color: var(--accent); font-weight: 600; }
+.price-card .btn-primary { width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px; }
+.price-card .btn-outline { width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px; }
+
+/* ── FAQ ── */
+.faq-list { max-width: 640px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--border-light); }
+.faq-q {
+  width: 100%; background: none; border: none; color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem; font-weight: 600; text-align: left;
+  padding: 20px 0; cursor: pointer; display: flex;
+  justify-content: space-between; align-items: center;
+  letter-spacing: -0.01em;
+}
+.faq-q::after {
+  content: '+'; font-size: 1.3rem; color: var(--accent);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0; margin-left: 16px; font-weight: 600;
+}
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+.faq-item.open .faq-a { opacity: 1; }
+.faq-a p { padding: 0 0 20px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+
+/* ── CTA banner ── */
+.cta-banner {
+  text-align: center; padding: 100px 0;
+  background: var(--bg-warm);
+}
+.cta-banner h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800;
+  letter-spacing: -0.03em; margin-bottom: 12px;
+}
+.cta-banner p {
+  color: var(--text-muted); font-size: 1rem; margin-bottom: 32px;
+}
+
+/* ── Footer ── */
+footer {
+  border-top: 1px solid var(--border-light); padding: 40px 0;
+  text-align: center; color: var(--text-muted); font-size: 0.82rem;
+}
+footer .links {
+  margin-bottom: 10px; display: flex; gap: 24px;
+  justify-content: center; flex-wrap: wrap;
+}
+footer .links a { color: var(--text-muted); font-size: 0.82rem; transition: color 0.2s; }
+footer .links a:hover { color: var(--accent); text-decoration: none; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .hero { padding: 120px 0 60px; }
+  section { padding: 80px 0; }
+  .features-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; gap: 32px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .nav-links a.nav-link { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 2.2rem; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .waitlist-inline { flex-direction: column; }
+  .waitlist-inline input { min-width: unset; }
+  .feature-card { padding: 24px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="container">
+    <div class="logo">Talk<span>Sift</span></div>
+    <div class="nav-links">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.1.0/TalkSift.dmg" class="nav-cta">⬇ Download for Mac</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <h1>Voice to polished text.<br><span class="accent">Instantly.</span></h1>
+    <p class="sub">Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.</p>
+    <div id="waitlist">
+      <div class="hero-actions">
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.1.0/TalkSift.dmg" class="btn-primary">⬇ Download for Mac</a>
+        <button class="btn-secondary" onclick="document.getElementById('win-waitlist').style.display='flex'">🪟 Join Waitlist for Windows</button>
+      </div>
+      <form class="waitlist-inline" id="win-waitlist" style="display:none;" onsubmit="return handleWaitlist(event)">
+        <input type="email" id="waitlist-email" placeholder="you@email.com" required>
+        <button type="submit" class="btn-primary btn-sm">Join Waitlist →</button>
+      </form>
+      <div class="waitlist-msg" id="waitlist-msg"></div>
+    </div>
+    <p class="hero-badge">macOS · English & Chinese · Free to start</p>
+
+    <!-- Before/After Examples -->
+    <div style="max-width:640px; margin:40px auto 0; display:flex; flex-direction:column; gap:14px; text-align:left;">
+
+      <!-- Example 1: Meeting -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div style="background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:600; margin-bottom:8px;">🎙 You say</div>
+          <p style="font-size:13px; color:#6b6b6b; line-height:1.6; font-style:italic;">"Um, so like, I was thinking we should, uh, you know, maybe move the meeting to... wait no, not Tuesday, Wednesday. Yeah, Wednesday works better."</p>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,0.06); border-left:3px solid #3d8b6e;">
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:600; margin-bottom:8px;">✨ TalkSift writes</div>
+          <p style="font-size:13px; color:#1a1a1a; line-height:1.6;">"Let's move the meeting to Wednesday."</p>
+        </div>
+      </div>
+
+      <!-- Example 2: Email draft -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div style="background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:600; margin-bottom:8px;">🎙 You say</div>
+          <p style="font-size:13px; color:#6b6b6b; line-height:1.6; font-style:italic;">"OK so basically, the thing is, uh, the client wants the report by Friday, and I think, well actually, we need to also include the Q4 numbers, not just Q3, because they specifically asked about year-over-year growth..."</p>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,0.06); border-left:3px solid #3d8b6e;">
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:600; margin-bottom:8px;">✨ TalkSift writes</div>
+          <p style="font-size:13px; color:#1a1a1a; line-height:1.6;">"The client needs the report by Friday. Include both Q3 and Q4 numbers — they want year-over-year growth data."</p>
+        </div>
+      </div>
+
+      <!-- Example 3: Quick note (Chinese) -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+        <div style="background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:600; margin-bottom:8px;">🎙 You say</div>
+          <p style="font-size:13px; color:#6b6b6b; line-height:1.6; font-style:italic;">"嗯，那个，就是说，我觉得这个方案吧，可能，啊，不太行，就是成本太高了，然后时间也不够，不对，时间倒还行，主要是成本的问题。"</p>
+        </div>
+        <div style="background:#fff; border-radius:12px; padding:18px 20px; box-shadow:0 1px 3px rgba(0,0,0,0.06); border-left:3px solid #3d8b6e;">
+          <div style="font-size:10px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:600; margin-bottom:8px;">✨ TalkSift writes</div>
+          <p style="font-size:13px; color:#1a1a1a; line-height:1.6;">"这个方案不太行，主要是成本太高。时间倒还可以。"</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Demo -->
+<section class="demo">
+  <div class="container">
+    <div class="demo-box"></div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="features">
+  <div class="container">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">Speak naturally. Get professional text.</h2>
+    <p class="section-sub">TalkSift listens to what you say, figures out what you mean, and writes it clearly.</p>
+    <div class="section-divider"></div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧹</div>
+        <h3>Filler & Ramble Removal</h3>
+        <p>Ums, uhs, "like", "you know" — gone. Repetitions and tangents — trimmed. Only your actual point survives.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>Correction Detection</h3>
+        <p>"Make it Monday — wait, no, Tuesday." TalkSift keeps Tuesday. It tracks when you change your mind and keeps the final intent.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <h3>AI Distillation</h3>
+        <p>Beyond grammar fixes. TalkSift restructures your rambling thoughts into clear, well-written text that sounds like you typed it carefully.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌏</div>
+        <h3>English & Chinese</h3>
+        <p>Speak in English, Chinese, or mix both. TalkSift handles multilingual input natively — no switching modes.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <h3>Voice Stays On Your Device</h3>
+        <p>Speech recognition runs 100% locally on your Mac. Your audio is never uploaded anywhere.<br><span style="font-size:0.8rem; color:var(--text-muted);">Text polishing uses a cloud AI service (DeepSeek) via encrypted connection. No data is stored or used for training.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section id="how" class="how-section">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Three seconds from mouth to polished text</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <h3>Talk</h3>
+        <p>Hit the shortcut and speak naturally. Ramble, restart, think out loud. No need to be articulate.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <h3>Sift</h3>
+        <p>AI strips filler, detects corrections, identifies your core message, and restructures it into clean prose.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <h3>Paste</h3>
+        <p>Polished text lands in your clipboard — or directly into any app. It reads like you typed it with care.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+  <div class="container">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title">Start free. Upgrade when you're hooked.</h2>
+    <p class="section-sub">Simple pricing. No hidden fees.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>Free</h3>
+        <div class="price-amount">$0</div>
+        <p class="price-note">4,000 characters / week</p>
+        <ul class="price-features">
+          <li>4,000 characters per week</li>
+          <li>English & Chinese</li>
+          <li>Filler removal + corrections</li>
+          <li>Clipboard output</li>
+        </ul>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.1.0/TalkSift.dmg" class="btn-outline">Download for Mac</a>
+      </div>
+      <div class="price-card featured">
+        <h3>Pro</h3>
+        <div class="price-amount">$6 <span>/ month</span></div>
+        <p class="price-note">$72/year billed annually <span class="price-save">Save 60%</span><br>$15/mo billed monthly</p>
+        <ul class="price-features">
+          <li>Unlimited distillations</li>
+          <li>Custom tone & style profiles</li>
+          <li>Priority processing</li>
+          <li>Direct app integration</li>
+        </ul>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.1.0/TalkSift.dmg" class="btn-primary">Download for Mac</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">Questions? Answered.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">How is this different from voice-to-text?</button>
+        <div class="faq-a"><p>Voice-to-text gives you a transcript — every "um", false start, and tangent included. TalkSift gives you what you <em>meant</em> to say, distilled and polished. Think of it as the difference between a recording and an edited essay.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Does it change what I mean?</button>
+        <div class="faq-a"><p>No. TalkSift preserves your intent and ideas. It removes noise (filler words, restarts, rambling) and restructures for clarity — but your meaning stays intact. You always review before sending.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What languages are supported?</button>
+        <div class="faq-a"><p>English and Chinese at launch, including mixed-language input. More languages are on the roadmap.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Is my voice data private?</button>
+        <div class="faq-a"><p>Your voice audio is processed entirely on your device using local speech recognition — it never leaves your Mac. The transcribed text is sent to an AI service (DeepSeek) for polishing via encrypted connection. We don't store your audio or text, and your data is never used to train models. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Which macOS versions are supported?</button>
+        <div class="faq-a"><p>TalkSift will support macOS 13 (Ventura) and later at launch.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">When does it launch?</button>
+        <div class="faq-a"><p>We're building right now. Join the waitlist to get early access — first batch ships soon.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Stop typing what you could just say.</h2>
+    <p>Download TalkSift and start talking.</p>
+    <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.1.0/TalkSift.dmg" class="btn-primary">⬇ Download for Mac</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="links">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:hello@talksift.app">Contact</a>
+      <a href="https://twitter.com/talksift" target="_blank">Twitter</a>
+    </div>
+    <p>© 2026 TalkSift. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const ans = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    // close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('open');
+      const a = i.querySelector('.faq-a');
+      a.style.maxHeight = null;
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      ans.style.maxHeight = ans.scrollHeight + 'px';
+    }
+  });
+});
+
+// Waitlist
+function handleWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('waitlist-email').value;
+  const msg = document.getElementById('waitlist-msg');
+  // TODO: POST to backend
+  console.log('Waitlist signup:', email);
+  msg.textContent = "You're on the list! We'll notify you when TalkSift for Windows is ready.";
+  document.getElementById('waitlist-email').value = '';
+  return false;
+}
+</script>
+</body>
+</html>
