@@ -411,7 +411,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.1.0/TalkSift.dmg" class="btn-primary" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
         <button class="btn-secondary" onclick="document.getElementById('win-waitlist').style.display='flex'">🪟 Join Waitlist for Windows</button>
       </div>
-      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">⚠️ First time opening? Right-click the app → Open → click "Open" again. <a href="#faq" style="color:var(--accent);">Why?</a></p>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">⚠️ First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
       <form class="waitlist-inline" id="win-waitlist" style="display:none;" onsubmit="return handleWaitlist(event)">
         <input type="email" id="waitlist-email" placeholder="you@email.com" required>
         <button type="submit" class="btn-primary btn-sm">Join Waitlist →</button>
@@ -595,7 +595,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       </div>
       <div class="faq-item">
         <button class="faq-q">Why does macOS say it can't verify TalkSift?</button>
-        <div class="faq-a"><p>TalkSift is not yet signed with an Apple Developer certificate. To open it: right-click TalkSift.app → click Open → click Open again in the dialog. You only need to do this once. We're working on getting Apple notarization.</p></div>
+        <div class="faq-a"><p>TalkSift is not yet signed with an Apple Developer certificate. To open it: double-click the app, close the warning, then go to <strong>System Settings → Privacy & Security</strong> and click <strong>"Open Anyway"</strong>. You only need to do this once.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">When does it launch?</button>
@@ -627,18 +627,21 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">2</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Right-click → Open</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">Don't double-click! Instead, <strong>right-click</strong> (or Control+click) on TalkSift in Applications and select <strong>"Open"</strong>.</p>
-          <!-- Mock macOS dialog -->
-          <div style="margin-top:12px; background:#2a2a2e; border-radius:12px; padding:24px; max-width:340px; text-align:center; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
-            <div style="font-size:36px; margin-bottom:8px;">⚠️</div>
-            <p style="color:#fff; font-size:13px; font-weight:600; margin-bottom:4px;">"TalkSift" is from an unidentified developer.</p>
-            <p style="color:#999; font-size:12px; margin-bottom:16px;">macOS cannot verify that this app is free from malware.</p>
-            <div style="display:flex; gap:8px; justify-content:center;">
-              <span style="background:#555; color:#fff; padding:6px 16px; border-radius:6px; font-size:12px;">Cancel</span>
-              <span style="background:var(--accent); color:#fff; padding:6px 16px; border-radius:6px; font-size:12px; font-weight:600;">👆 Click "Open"</span>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Double-click to open — then allow it</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">macOS will show a warning. Click <strong>"Done"</strong> to close it. Then:</p>
+          <div style="margin-top:12px; display:flex; flex-direction:column; gap:12px;">
+            <!-- Mock: System Settings -->
+            <div style="background:#2a2a2e; border-radius:12px; padding:20px; max-width:400px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+              <p style="color:#999; font-size:11px; text-transform:uppercase; letter-spacing:1px; margin-bottom:12px;">⚙️ System Settings → Privacy & Security</p>
+              <div style="background:#3a3a3e; border-radius:8px; padding:14px; display:flex; justify-content:space-between; align-items:center;">
+                <div>
+                  <p style="color:#fff; font-size:13px; font-weight:500;">"TalkSift" was blocked from opening</p>
+                </div>
+                <span style="background:var(--accent); color:#fff; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; white-space:nowrap;">👆 Open Anyway</span>
+              </div>
             </div>
           </div>
+          <p style="color:var(--text-muted); font-size:0.85rem; line-height:1.6; margin-top:10px;">Open <strong>System Settings → Privacy & Security</strong>, scroll down, and click <strong>"Open Anyway"</strong>. Enter your password to confirm.</p>
         </div>
       </div>
 
