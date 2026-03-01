@@ -289,7 +289,7 @@ section { padding: 120px 0; }
   box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px var(--accent-border);
 }
 .price-card.featured::after {
-  content: 'POPULAR'; position: absolute; top: -11px; right: 20px;
+  content: attr(data-popular); position: absolute; top: -11px; right: 20px;
   background: var(--accent); color: #fff; font-size: 0.65rem;
   font-weight: 700; padding: 3px 10px; border-radius: 5px;
   letter-spacing: 0.06em;
@@ -393,10 +393,14 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
   <div class="container">
     <div class="logo">Talk<span>Sift</span></div>
     <div class="nav-links">
-      <a href="#features" class="nav-link">Features</a>
-      <a href="#pricing" class="nav-link">Pricing</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="nav-cta" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
+      <a href="#features" class="nav-link" data-i18n="nav.features">Features</a>
+      <a href="#pricing" class="nav-link" data-i18n="nav.pricing">Pricing</a>
+      <a href="#faq" class="nav-link" data-i18n="nav.faq">FAQ</a>
+      <div class="lang-switcher" style="display:inline-flex; gap:0; font-size:0.8rem; border:1px solid var(--border); border-radius:6px; overflow:hidden;">
+        <button onclick="switchLang('en')" id="lang-en" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:600; background:var(--accent); color:#fff; font-family:inherit;">EN</button>
+        <button onclick="switchLang('zh')" id="lang-zh" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:500; background:var(--surface); color:var(--text-muted); font-family:inherit;">中文</button>
+      </div>
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="nav-cta" data-i18n="nav.download" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
     </div>
   </div>
 </nav>
@@ -404,21 +408,21 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- Hero -->
 <section class="hero">
   <div class="container">
-    <h1>Voice to polished text.<br><span class="accent">Instantly.</span></h1>
-    <p class="sub">Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.</p>
+    <h1 data-i18n-html="hero.title">Voice to polished text.<br><span class="accent">Instantly.</span></h1>
+    <p class="sub" data-i18n="hero.subtitle">Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.</p>
     <div id="waitlist">
       <div class="hero-actions">
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-primary" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
-        <button class="btn-secondary" onclick="document.getElementById('win-waitlist').style.display='flex'">🪟 Join Waitlist for Windows</button>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-primary" data-i18n="hero.downloadMac" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
+        <button class="btn-secondary" data-i18n="hero.joinWaitlist" onclick="document.getElementById('win-waitlist').style.display='flex'">🪟 Join Waitlist for Windows</button>
       </div>
-      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">⚠️ First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;" data-i18n-html="hero.firstTimeHint">⚠️ First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
       <form class="waitlist-inline" id="win-waitlist" style="display:none;" onsubmit="return handleWaitlist(event)">
         <input type="email" id="waitlist-email" placeholder="you@email.com" required>
         <button type="submit" class="btn-primary btn-sm">Join Waitlist →</button>
       </form>
       <div class="waitlist-msg" id="waitlist-msg"></div>
     </div>
-    <p class="hero-badge">macOS · English & Chinese · Free to start</p>
+    <p class="hero-badge" data-i18n="hero.badge">macOS · English & Chinese · Free to start</p>
 
     <!-- Before/After Examples -->
     <div style="max-width:640px; margin:40px auto 0; display:flex; flex-direction:column; gap:14px; text-align:left;">
@@ -473,35 +477,35 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- Features -->
 <section id="features">
   <div class="container">
-    <p class="section-label">Features</p>
-    <h2 class="section-title">Speak naturally. Get professional text.</h2>
-    <p class="section-sub">TalkSift listens to what you say, figures out what you mean, and writes it clearly.</p>
+    <p class="section-label" data-i18n="features.label">Features</p>
+    <h2 class="section-title" data-i18n="features.title">Speak naturally. Get professional text.</h2>
+    <p class="section-sub" data-i18n="features.subtitle">TalkSift listens to what you say, figures out what you mean, and writes it clearly.</p>
     <div class="section-divider"></div>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🧹</div>
-        <h3>Filler & Ramble Removal</h3>
-        <p>Ums, uhs, "like", "you know" — gone. Repetitions and tangents — trimmed. Only your actual point survives.</p>
+        <h3 data-i18n="features.filler.title">Filler & Ramble Removal</h3>
+        <p data-i18n="features.filler.desc">Ums, uhs, "like", "you know" — gone. Repetitions and tangents — trimmed. Only your actual point survives.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔄</div>
-        <h3>Correction Detection</h3>
-        <p>"Make it Monday — wait, no, Tuesday." TalkSift keeps Tuesday. It tracks when you change your mind and keeps the final intent.</p>
+        <h3 data-i18n="features.correction.title">Correction Detection</h3>
+        <p data-i18n="features.correction.desc">"Make it Monday — wait, no, Tuesday." TalkSift keeps Tuesday. It tracks when you change your mind and keeps the final intent.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">✨</div>
-        <h3>AI Distillation</h3>
-        <p>Beyond grammar fixes. TalkSift restructures your rambling thoughts into clear, well-written text that sounds like you typed it carefully.</p>
+        <h3 data-i18n="features.ai.title">AI Distillation</h3>
+        <p data-i18n="features.ai.desc">Beyond grammar fixes. TalkSift restructures your rambling thoughts into clear, well-written text that sounds like you typed it carefully.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🌏</div>
-        <h3>English & Chinese</h3>
-        <p>Speak in English, Chinese, or mix both. TalkSift handles multilingual input natively — no switching modes.</p>
+        <h3 data-i18n="features.lang.title">English & Chinese</h3>
+        <p data-i18n="features.lang.desc">Speak in English, Chinese, or mix both. TalkSift handles multilingual input natively — no switching modes.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🔒</div>
-        <h3>Voice Stays On Your Device</h3>
-        <p>Speech recognition runs 100% locally on your Mac. Your audio is never uploaded anywhere.<br><span style="font-size:0.8rem; color:var(--text-muted);">Text polishing uses a cloud AI service (DeepSeek) via encrypted connection. No data is stored or used for training.</span></p>
+        <h3 data-i18n="features.privacy.title">Voice Stays On Your Device</h3>
+        <p data-i18n-html="features.privacy.desc">Speech recognition runs 100% locally on your Mac. Your audio is never uploaded anywhere.<br><span style="font-size:0.8rem; color:var(--text-muted);">Text polishing uses a cloud AI service (DeepSeek) via encrypted connection. No data is stored or used for training.</span></p>
       </div>
     </div>
   </div>
@@ -510,23 +514,23 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- How it works -->
 <section id="how" class="how-section">
   <div class="container">
-    <p class="section-label">How It Works</p>
-    <h2 class="section-title">Three seconds from mouth to polished text</h2>
+    <p class="section-label" data-i18n="how.label">How It Works</p>
+    <h2 class="section-title" data-i18n="how.title">Three seconds from mouth to polished text</h2>
     <div class="steps">
       <div class="step">
         <div class="step-number">1</div>
-        <h3>Talk</h3>
-        <p>Hit the shortcut and speak naturally. Ramble, restart, think out loud. No need to be articulate.</p>
+        <h3 data-i18n="how.step1.title">Talk</h3>
+        <p data-i18n="how.step1.desc">Hit the shortcut and speak naturally. Ramble, restart, think out loud. No need to be articulate.</p>
       </div>
       <div class="step">
         <div class="step-number">2</div>
-        <h3>Sift</h3>
-        <p>AI strips filler, detects corrections, identifies your core message, and restructures it into clean prose.</p>
+        <h3 data-i18n="how.step2.title">Sift</h3>
+        <p data-i18n="how.step2.desc">AI strips filler, detects corrections, identifies your core message, and restructures it into clean prose.</p>
       </div>
       <div class="step">
         <div class="step-number">3</div>
-        <h3>Paste</h3>
-        <p>Polished text lands in your clipboard — or directly into any app. It reads like you typed it with care.</p>
+        <h3 data-i18n="how.step3.title">Paste</h3>
+        <p data-i18n="how.step3.desc">Polished text lands in your clipboard — or directly into any app. It reads like you typed it with care.</p>
       </div>
     </div>
   </div>
@@ -535,45 +539,45 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- Pricing -->
 <section id="pricing">
   <div class="container">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title">Start free. Upgrade when you're hooked.</h2>
-    <p class="section-sub">Simple pricing. No hidden fees.</p>
+    <p class="section-label" data-i18n="pricing.label">Pricing</p>
+    <h2 class="section-title" data-i18n="pricing.title">Start free. Upgrade when you're hooked.</h2>
+    <p class="section-sub" data-i18n="pricing.subtitle">Simple pricing. No hidden fees.</p>
     <div class="pricing-grid" style="grid-template-columns:repeat(3,1fr); max-width:860px;">
       <div class="price-card">
-        <h3>Free</h3>
+        <h3 data-i18n="pricing.free.name">Free</h3>
         <div class="price-amount">$0</div>
-        <p class="price-note">4,000 characters / week</p>
+        <p class="price-note" data-i18n="pricing.free.note">4,000 characters / week</p>
         <ul class="price-features">
-          <li>4,000 characters per week</li>
-          <li>English & Chinese</li>
-          <li>Filler removal + corrections</li>
-          <li>Clipboard output</li>
+          <li data-i18n="pricing.free.f1">4,000 characters per week</li>
+          <li data-i18n="pricing.free.f2">English & Chinese</li>
+          <li data-i18n="pricing.free.f3">Filler removal + corrections</li>
+          <li data-i18n="pricing.free.f4">Clipboard output</li>
         </ul>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-outline" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">Download Free</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-outline" data-i18n="pricing.free.btn" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">Download Free</a>
       </div>
       <div class="price-card">
-        <h3>Pro Monthly</h3>
-        <div class="price-amount">$15 <span>/ month</span></div>
-        <p class="price-note">Cancel anytime</p>
+        <h3 data-i18n="pricing.monthly.name">Pro Monthly</h3>
+        <div class="price-amount" data-i18n-html="pricing.monthly.price">$8 <span>/ month</span></div>
+        <p class="price-note" data-i18n="pricing.monthly.note">Cancel anytime</p>
         <ul class="price-features">
-          <li>Unlimited distillations</li>
-          <li>Custom tone & style profiles</li>
-          <li>Priority processing</li>
-          <li>Direct app integration</li>
+          <li data-i18n="pricing.monthly.f1">Unlimited distillations</li>
+          <li data-i18n="pricing.monthly.f2">Custom tone & style profiles</li>
+          <li data-i18n="pricing.monthly.f3">Priority processing</li>
+          <li data-i18n="pricing.monthly.f4">Direct app integration</li>
         </ul>
-        <a href="#" class="btn-outline">Coming Soon</a>
+        <a href="#" class="btn-outline" data-i18n="pricing.comingSoon">Coming Soon</a>
       </div>
-      <div class="price-card featured">
-        <h3>Pro Annual</h3>
-        <div class="price-amount">$6 <span>/ month</span></div>
-        <p class="price-note">$72/year — <span class="price-save">Save 60%</span></p>
+      <div class="price-card featured" data-popular="POPULAR">
+        <h3 data-i18n="pricing.annual.name">Pro Annual</h3>
+        <div class="price-amount" data-i18n-html="pricing.annual.price">$3 <span>/ month</span></div>
+        <p class="price-note" data-i18n-html="pricing.annual.note">$36/year — <span class="price-save">Save 63%</span></p>
         <ul class="price-features">
-          <li>Everything in Pro Monthly</li>
-          <li>2 months free</li>
-          <li>Priority support</li>
-          <li>Early access to new features</li>
+          <li data-i18n="pricing.annual.f1">Everything in Pro Monthly</li>
+          <li data-i18n="pricing.annual.f2">2 months free</li>
+          <li data-i18n="pricing.annual.f3">Priority support</li>
+          <li data-i18n="pricing.annual.f4">Early access to new features</li>
         </ul>
-        <a href="#" class="btn-primary">Coming Soon</a>
+        <a href="#" class="btn-primary" data-i18n="pricing.comingSoon">Coming Soon</a>
       </div>
       </div>
     </div>
@@ -583,36 +587,36 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- FAQ -->
 <section id="faq">
   <div class="container">
-    <p class="section-label">FAQ</p>
-    <h2 class="section-title">Questions? Answered.</h2>
+    <p class="section-label" data-i18n="faq.label">FAQ</p>
+    <h2 class="section-title" data-i18n="faq.title">Questions? Answered.</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q">How is this different from voice-to-text?</button>
-        <div class="faq-a"><p>Voice-to-text gives you a transcript — every "um", false start, and tangent included. TalkSift gives you what you <em>meant</em> to say, distilled and polished. Think of it as the difference between a recording and an edited essay.</p></div>
+        <button class="faq-q" data-i18n="faq.q1">How is this different from voice-to-text?</button>
+        <div class="faq-a"><p data-i18n-html="faq.a1">Voice-to-text gives you a transcript — every "um", false start, and tangent included. TalkSift gives you what you <em>meant</em> to say, distilled and polished. Think of it as the difference between a recording and an edited essay.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Does it change what I mean?</button>
-        <div class="faq-a"><p>No. TalkSift preserves your intent and ideas. It removes noise (filler words, restarts, rambling) and restructures for clarity — but your meaning stays intact. You always review before sending.</p></div>
+        <button class="faq-q" data-i18n="faq.q2">Does it change what I mean?</button>
+        <div class="faq-a"><p data-i18n="faq.a2">No. TalkSift preserves your intent and ideas. It removes noise (filler words, restarts, rambling) and restructures for clarity — but your meaning stays intact. You always review before sending.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">What languages are supported?</button>
-        <div class="faq-a"><p>English and Chinese at launch, including mixed-language input. More languages are on the roadmap.</p></div>
+        <button class="faq-q" data-i18n="faq.q3">What languages are supported?</button>
+        <div class="faq-a"><p data-i18n="faq.a3">English and Chinese at launch, including mixed-language input. More languages are on the roadmap.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Is my voice data private?</button>
-        <div class="faq-a"><p>Your voice audio is processed entirely on your device using local speech recognition — it never leaves your Mac. The transcribed text is sent to an AI service (DeepSeek) for polishing via encrypted connection. We don't store your audio or text, and your data is never used to train models. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p></div>
+        <button class="faq-q" data-i18n="faq.q4">Is my voice data private?</button>
+        <div class="faq-a"><p data-i18n-html="faq.a4">Your voice audio is processed entirely on your device using local speech recognition — it never leaves your Mac. The transcribed text is sent to an AI service (DeepSeek) for polishing via encrypted connection. We don't store your audio or text, and your data is never used to train models. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Which macOS versions are supported?</button>
-        <div class="faq-a"><p>TalkSift will support macOS 13 (Ventura) and later at launch.</p></div>
+        <button class="faq-q" data-i18n="faq.q5">Which macOS versions are supported?</button>
+        <div class="faq-a"><p data-i18n="faq.a5">TalkSift will support macOS 13 (Ventura) and later at launch.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">Why does macOS say it can't verify TalkSift?</button>
-        <div class="faq-a"><p>TalkSift is not yet signed with an Apple Developer certificate. To open it: double-click the app, close the warning, then go to <strong>System Settings → Privacy & Security</strong> and click <strong>"Open Anyway"</strong>. You only need to do this once.</p></div>
+        <button class="faq-q" data-i18n="faq.q6">Why does macOS say it can't verify TalkSift?</button>
+        <div class="faq-a"><p data-i18n-html="faq.a6">TalkSift is not yet signed with an Apple Developer certificate. To open it: double-click the app, close the warning, then go to <strong>System Settings → Privacy & Security</strong> and click <strong>"Open Anyway"</strong>. You only need to do this once.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">When does it launch?</button>
-        <div class="faq-a"><p>We're building right now. Join the waitlist to get early access — first batch ships soon.</p></div>
+        <button class="faq-q" data-i18n="faq.q7">When does it launch?</button>
+        <div class="faq-a"><p data-i18n="faq.a7">We're building right now. Join the waitlist to get early access — first batch ships soon.</p></div>
       </div>
     </div>
   </div>
@@ -621,9 +625,9 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- Install Guide -->
 <section id="install-guide" style="padding:100px 0; background:var(--bg-warm);">
   <div class="container" style="max-width:720px;">
-    <p class="section-label">Installation Guide</p>
-    <h2 class="section-title">How to install TalkSift on macOS</h2>
-    <p class="section-sub">Since TalkSift isn't on the App Store yet, macOS may show a security warning. Here's how to open it — takes 10 seconds.</p>
+    <p class="section-label" data-i18n="install.label">Installation Guide</p>
+    <h2 class="section-title" data-i18n="install.title">How to install TalkSift on macOS</h2>
+    <p class="section-sub" data-i18n="install.subtitle">Since TalkSift isn't on the App Store yet, macOS may show a security warning. Here's how to open it — takes 10 seconds.</p>
 
     <div style="display:flex; flex-direction:column; gap:32px; margin-top:40px;">
 
@@ -631,8 +635,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">1</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Open the DMG file</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">Double-click the downloaded <strong>TalkSift.dmg</strong> and drag TalkSift to your Applications folder.</p>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step1.title">Open the DMG file</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.step1.desc">Double-click the downloaded <strong>TalkSift.dmg</strong> and drag TalkSift to your Applications folder.</p>
         </div>
       </div>
 
@@ -640,8 +644,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">2</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Try to open TalkSift</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">Double-click <strong>TalkSift</strong> in your Applications folder. macOS will show a warning — this is normal. Click <strong>"Done"</strong> to close it. (Don't worry, we'll fix this in the next step.)</p>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step2.title">Try to open TalkSift</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.step2.desc">Double-click <strong>TalkSift</strong> in your Applications folder. macOS will show a warning — this is normal. Click <strong>"Done"</strong> to close it. (Don't worry, we'll fix this in the next step.)</p>
         </div>
       </div>
 
@@ -649,8 +653,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">3</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Open System Settings</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step3.title">Open System Settings</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step3.desc">
             Click the <strong>Apple menu </strong> in the top-left corner of your screen, then click <strong>"System Settings"</strong>.
           </p>
           <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:260px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
@@ -668,8 +672,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">4</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Go to Privacy & Security</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step4.title">Go to Privacy & Security</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step4.desc">
             In the left sidebar, scroll down and click <strong>"Privacy & Security"</strong>.
           </p>
           <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:240px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
@@ -686,8 +690,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">5</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">Click "Open Anyway"</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step5.title">Click "Open Anyway"</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step5.desc">
             Scroll down on the right side. You'll see a message saying <strong>"TalkSift" was blocked</strong>. Click the <strong>"Open Anyway"</strong> button. Enter your Mac password when asked.
           </p>
           <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:420px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
@@ -704,8 +708,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       <div style="display:flex; gap:20px; align-items:flex-start;">
         <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">✓</div>
         <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;">You're all set!</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;">TalkSift will open. You only need to do this once — next time just double-click to open.</p>
+          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step6.title">You're all set!</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n="install.step6.desc">TalkSift will open. You only need to do this once — next time just double-click to open.</p>
         </div>
       </div>
 
@@ -716,9 +720,9 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <!-- CTA Banner -->
 <section class="cta-banner">
   <div class="container">
-    <h2>Stop typing what you could just say.</h2>
-    <p>Download TalkSift and start talking.</p>
-    <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-primary" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
+    <h2 data-i18n="cta.title">Stop typing what you could just say.</h2>
+    <p data-i18n="cta.subtitle">Download TalkSift and start talking.</p>
+    <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.0/TalkSift.dmg" class="btn-primary" data-i18n="cta.btn" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
   </div>
 </section>
 
@@ -726,11 +730,11 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <footer>
   <div class="container">
     <div class="links">
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="mailto:hello@talksift.app">Contact</a>
+      <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a>
+      <a href="mailto:hello@talksift.app" data-i18n="footer.contact">Contact</a>
       <a href="https://twitter.com/talksift" target="_blank">Twitter</a>
     </div>
-    <p>© 2026 TalkSift. All rights reserved.</p>
+    <p data-i18n="footer.copyright">© 2026 TalkSift. All rights reserved.</p>
   </div>
 </footer>
 
@@ -765,6 +769,239 @@ function handleWaitlist(e) {
   document.getElementById('waitlist-email').value = '';
   return false;
 }
+
+// i18n
+const i18n = {
+  en: {
+    'nav.features': 'Features',
+    'nav.pricing': 'Pricing',
+    'nav.faq': 'FAQ',
+    'nav.download': '⬇ Download for Mac',
+    'hero.title': 'Voice to polished text.<br><span class="accent">Instantly.</span>',
+    'hero.subtitle': 'Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.',
+    'hero.downloadMac': '⬇ Download for Mac',
+    'hero.joinWaitlist': '🪟 Join Waitlist for Windows',
+    'hero.firstTimeHint': '⚠️ First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.',
+    'hero.badge': 'macOS · English & Chinese · Free to start',
+    'features.label': 'Features',
+    'features.title': 'Speak naturally. Get professional text.',
+    'features.subtitle': 'TalkSift listens to what you say, figures out what you mean, and writes it clearly.',
+    'features.filler.title': 'Filler & Ramble Removal',
+    'features.filler.desc': 'Ums, uhs, "like", "you know" — gone. Repetitions and tangents — trimmed. Only your actual point survives.',
+    'features.correction.title': 'Correction Detection',
+    'features.correction.desc': '"Make it Monday — wait, no, Tuesday." TalkSift keeps Tuesday. It tracks when you change your mind and keeps the final intent.',
+    'features.ai.title': 'AI Distillation',
+    'features.ai.desc': 'Beyond grammar fixes. TalkSift restructures your rambling thoughts into clear, well-written text that sounds like you typed it carefully.',
+    'features.lang.title': 'English & Chinese',
+    'features.lang.desc': 'Speak in English, Chinese, or mix both. TalkSift handles multilingual input natively — no switching modes.',
+    'features.privacy.title': 'Voice Stays On Your Device',
+    'features.privacy.desc': 'Speech recognition runs 100% locally on your Mac. Your audio is never uploaded anywhere.<br><span style="font-size:0.8rem; color:var(--text-muted);">Text polishing uses a cloud AI service (DeepSeek) via encrypted connection. No data is stored or used for training.</span>',
+    'how.label': 'How It Works',
+    'how.title': 'Three seconds from mouth to polished text',
+    'how.step1.title': 'Talk',
+    'how.step1.desc': 'Hit the shortcut and speak naturally. Ramble, restart, think out loud. No need to be articulate.',
+    'how.step2.title': 'Sift',
+    'how.step2.desc': 'AI strips filler, detects corrections, identifies your core message, and restructures it into clean prose.',
+    'how.step3.title': 'Paste',
+    'how.step3.desc': 'Polished text lands in your clipboard — or directly into any app. It reads like you typed it with care.',
+    'pricing.label': 'Pricing',
+    'pricing.title': "Start free. Upgrade when you're hooked.",
+    'pricing.subtitle': 'Simple pricing. No hidden fees.',
+    'pricing.free.name': 'Free',
+    'pricing.free.note': '4,000 characters / week',
+    'pricing.free.f1': '4,000 characters per week',
+    'pricing.free.f2': 'English & Chinese',
+    'pricing.free.f3': 'Filler removal + corrections',
+    'pricing.free.f4': 'Clipboard output',
+    'pricing.free.btn': 'Download Free',
+    'pricing.monthly.name': 'Pro Monthly',
+    'pricing.monthly.price': '$8 <span>/ month</span>',
+    'pricing.monthly.note': 'Cancel anytime',
+    'pricing.monthly.f1': 'Unlimited distillations',
+    'pricing.monthly.f2': 'Custom tone & style profiles',
+    'pricing.monthly.f3': 'Priority processing',
+    'pricing.monthly.f4': 'Direct app integration',
+    'pricing.comingSoon': 'Coming Soon',
+    'pricing.annual.name': 'Pro Annual',
+    'pricing.annual.price': '$3 <span>/ month</span>',
+    'pricing.annual.note': '$36/year — <span class="price-save">Save 63%</span>',
+    'pricing.annual.f1': 'Everything in Pro Monthly',
+    'pricing.annual.f2': '2 months free',
+    'pricing.annual.f3': 'Priority support',
+    'pricing.annual.f4': 'Early access to new features',
+    'faq.label': 'FAQ',
+    'faq.title': 'Questions? Answered.',
+    'faq.q1': 'How is this different from voice-to-text?',
+    'faq.a1': 'Voice-to-text gives you a transcript — every "um", false start, and tangent included. TalkSift gives you what you <em>meant</em> to say, distilled and polished. Think of it as the difference between a recording and an edited essay.',
+    'faq.q2': 'Does it change what I mean?',
+    'faq.a2': 'No. TalkSift preserves your intent and ideas. It removes noise (filler words, restarts, rambling) and restructures for clarity — but your meaning stays intact. You always review before sending.',
+    'faq.q3': 'What languages are supported?',
+    'faq.a3': 'English and Chinese at launch, including mixed-language input. More languages are on the roadmap.',
+    'faq.q4': 'Is my voice data private?',
+    'faq.a4': 'Your voice audio is processed entirely on your device using local speech recognition — it never leaves your Mac. The transcribed text is sent to an AI service (DeepSeek) for polishing via encrypted connection. We don\'t store your audio or text, and your data is never used to train models. See our <a href="privacy-policy.html">Privacy Policy</a> for details.',
+    'faq.q5': 'Which macOS versions are supported?',
+    'faq.a5': 'TalkSift will support macOS 13 (Ventura) and later at launch.',
+    'faq.q6': 'Why does macOS say it can\'t verify TalkSift?',
+    'faq.a6': 'TalkSift is not yet signed with an Apple Developer certificate. To open it: double-click the app, close the warning, then go to <strong>System Settings → Privacy & Security</strong> and click <strong>"Open Anyway"</strong>. You only need to do this once.',
+    'faq.q7': 'When does it launch?',
+    'faq.a7': "We're building right now. Join the waitlist to get early access — first batch ships soon.",
+    'install.label': 'Installation Guide',
+    'install.title': 'How to install TalkSift on macOS',
+    'install.subtitle': "Since TalkSift isn't on the App Store yet, macOS may show a security warning. Here's how to open it — takes 10 seconds.",
+    'install.step1.title': 'Open the DMG file',
+    'install.step1.desc': 'Double-click the downloaded <strong>TalkSift.dmg</strong> and drag TalkSift to your Applications folder.',
+    'install.step2.title': 'Try to open TalkSift',
+    'install.step2.desc': 'Double-click <strong>TalkSift</strong> in your Applications folder. macOS will show a warning — this is normal. Click <strong>"Done"</strong> to close it. (Don\'t worry, we\'ll fix this in the next step.)',
+    'install.step3.title': 'Open System Settings',
+    'install.step3.desc': 'Click the <strong>Apple menu </strong> in the top-left corner of your screen, then click <strong>"System Settings"</strong>.',
+    'install.step4.title': 'Go to Privacy & Security',
+    'install.step4.desc': 'In the left sidebar, scroll down and click <strong>"Privacy & Security"</strong>.',
+    'install.step5.title': 'Click "Open Anyway"',
+    'install.step5.desc': 'Scroll down on the right side. You\'ll see a message saying <strong>"TalkSift" was blocked</strong>. Click the <strong>"Open Anyway"</strong> button. Enter your Mac password when asked.',
+    'install.step6.title': "You're all set!",
+    'install.step6.desc': 'TalkSift will open. You only need to do this once — next time just double-click to open.',
+    'cta.title': 'Stop typing what you could just say.',
+    'cta.subtitle': 'Download TalkSift and start talking.',
+    'cta.btn': '⬇ Download for Mac',
+    'footer.privacy': 'Privacy Policy',
+    'footer.contact': 'Contact',
+    'footer.copyright': '© 2026 TalkSift. All rights reserved.',
+  },
+  zh: {
+    'nav.features': '功能',
+    'nav.pricing': '价格',
+    'nav.faq': '常见问题',
+    'nav.download': '⬇ 下载 Mac 版',
+    'hero.title': '语音变成精炼文字。<br><span class="accent">即刻完成。</span>',
+    'hero.subtitle': '只管说。TalkSift 帮你去掉口头禅、重复和跑题——几秒内给你干净、可直接使用的文字。',
+    'hero.downloadMac': '⬇ 下载 Mac 版',
+    'hero.joinWaitlist': '🪟 Windows 版等候名单',
+    'hero.firstTimeHint': '⚠️ 第一次使用？请查看下方的<a href="#install-guide" style="color:var(--accent);">安装指南</a>。',
+    'hero.badge': 'macOS · 中英文 · 免费开始',
+    'features.label': '功能',
+    'features.title': '自然地说，得到专业的文字。',
+    'features.subtitle': 'TalkSift 听你说的话，理解你的意思，帮你写清楚。',
+    'features.filler.title': '去除口头禅和废话',
+    'features.filler.desc': '"嗯"、"那个"、"就是说"——统统删掉。重复和跑题——精简掉。只留下你真正要表达的。',
+    'features.correction.title': '自动纠正检测',
+    'features.correction.desc': '"约周一——不对，周二。" TalkSift 保留周二。它能追踪你改主意的地方，只保留最终意图。',
+    'features.ai.title': 'AI 提炼',
+    'features.ai.desc': '不只是语法修正。TalkSift 把你零散的想法重新组织成清晰、流畅的文字，就像你认真打出来的一样。',
+    'features.lang.title': '中英双语',
+    'features.lang.desc': '说英文、中文，或者中英混用都行。TalkSift 原生支持多语言——无需切换模式。',
+    'features.privacy.title': '语音不离开你的设备',
+    'features.privacy.desc': '语音识别 100% 在你的 Mac 本地运行，音频永远不会上传。<br><span style="font-size:0.8rem; color:var(--text-muted);">文字润色使用云端 AI 服务（DeepSeek），通过加密连接传输。不存储数据，不用于训练。</span>',
+    'how.label': '使用方法',
+    'how.title': '从说话到精炼文字，只要三秒',
+    'how.step1.title': '说',
+    'how.step1.desc': '按下快捷键，自然地说。可以跑题、重来、想到哪说到哪。不用字斟句酌。',
+    'how.step2.title': '提炼',
+    'how.step2.desc': 'AI 去除废话，检测纠正，识别核心意思，重新组织成清晰的文字。',
+    'how.step3.title': '粘贴',
+    'how.step3.desc': '精炼后的文字自动进入剪贴板——或直接输入到任何应用。读起来就像你认真打的。',
+    'pricing.label': '价格',
+    'pricing.title': '免费开始，用上瘾了再升级。',
+    'pricing.subtitle': '简单定价，没有隐藏费用。',
+    'pricing.free.name': '免费',
+    'pricing.free.note': '每周 4,000 字符',
+    'pricing.free.f1': '每周 4,000 字符',
+    'pricing.free.f2': '中英双语',
+    'pricing.free.f3': '去除口头禅 + 纠正检测',
+    'pricing.free.f4': '剪贴板输出',
+    'pricing.free.btn': '免费下载',
+    'pricing.monthly.name': '专业月付',
+    'pricing.monthly.price': '$8 <span>/ 月</span>',
+    'pricing.monthly.note': '随时取消',
+    'pricing.monthly.f1': '无限次提炼',
+    'pricing.monthly.f2': '自定义语气和风格',
+    'pricing.monthly.f3': '优先处理',
+    'pricing.monthly.f4': '直接应用集成',
+    'pricing.comingSoon': '即将推出',
+    'pricing.annual.name': '专业年付',
+    'pricing.annual.price': '$3 <span>/ 月</span>',
+    'pricing.annual.note': '$36/年 — <span class="price-save">省 63%</span>',
+    'pricing.annual.f1': '包含月付版所有功能',
+    'pricing.annual.f2': '免费 2 个月',
+    'pricing.annual.f3': '优先支持',
+    'pricing.annual.f4': '抢先体验新功能',
+    'faq.label': '常见问题',
+    'faq.title': '有疑问？这里有答案。',
+    'faq.q1': '这和语音转文字有什么不同？',
+    'faq.a1': '语音转文字给你一份逐字记录——包括每一个"嗯"、重来和跑题。TalkSift 给你的是你<em>真正想说的</em>，经过提炼和润色。就像录音和编辑后的文章的区别。',
+    'faq.q2': '它会改变我的意思吗？',
+    'faq.a2': '不会。TalkSift 保留你的意图和想法。它只是去除噪音（口头禅、重复、废话）并重新组织让表达更清晰——但你的意思完全不变。你随时可以在发送前检查。',
+    'faq.q3': '支持哪些语言？',
+    'faq.a3': '首发支持英文和中文，包括中英混用。更多语言在规划中。',
+    'faq.q4': '我的语音数据安全吗？',
+    'faq.a4': '语音音频完全在你的设备上通过本地语音识别处理——永远不会离开你的 Mac。转录后的文字通过加密连接发送到 AI 服务（DeepSeek）进行润色。我们不存储你的音频或文字，你的数据也不会用于训练模型。详情请参阅<a href="privacy-policy.html">隐私政策</a>。',
+    'faq.q5': '支持哪些 macOS 版本？',
+    'faq.a5': 'TalkSift 支持 macOS 13 (Ventura) 及更高版本。',
+    'faq.q6': '为什么 macOS 提示无法验证 TalkSift？',
+    'faq.a6': 'TalkSift 尚未使用 Apple 开发者证书签名。打开方式：双击应用，关闭警告，然后前往<strong>系统设置 → 隐私与安全性</strong>，点击<strong>"仍要打开"</strong>。只需操作一次。',
+    'faq.q7': '什么时候正式发布？',
+    'faq.a7': '我们正在紧锣密鼓地开发中。加入等候名单即可获得早期体验——第一批很快发出。',
+    'install.label': '安装指南',
+    'install.title': '如何在 macOS 上安装 TalkSift',
+    'install.subtitle': '由于 TalkSift 尚未上架 App Store，macOS 可能会显示安全警告。以下是打开方式——只需 10 秒。',
+    'install.step1.title': '打开 DMG 文件',
+    'install.step1.desc': '双击下载的 <strong>TalkSift.dmg</strong>，将 TalkSift 拖入"应用程序"文件夹。',
+    'install.step2.title': '尝试打开 TalkSift',
+    'install.step2.desc': '在"应用程序"文件夹中双击 <strong>TalkSift</strong>。macOS 会弹出警告——这是正常的。点击<strong>"完成"</strong>关闭它。（别担心，下一步会解决。）',
+    'install.step3.title': '打开系统设置',
+    'install.step3.desc': '点击屏幕左上角的 <strong>Apple 菜单 </strong>，然后点击<strong>"系统设置"</strong>。',
+    'install.step4.title': '进入隐私与安全性',
+    'install.step4.desc': '在左侧边栏中，向下滚动并点击<strong>"隐私与安全性"</strong>。',
+    'install.step5.title': '点击"仍要打开"',
+    'install.step5.desc': '在右侧向下滚动。你会看到<strong>"TalkSift" 已被阻止打开</strong>的提示。点击<strong>"仍要打开"</strong>按钮。系统会要求输入 Mac 密码。',
+    'install.step6.title': '大功告成！',
+    'install.step6.desc': 'TalkSift 将会打开。你只需要做这一次——以后双击就能直接打开。',
+    'cta.title': '别再打字了，说就行。',
+    'cta.subtitle': '下载 TalkSift，开口即用。',
+    'cta.btn': '⬇ 下载 Mac 版',
+    'footer.privacy': '隐私政策',
+    'footer.contact': '联系我们',
+    'footer.copyright': '© 2026 TalkSift. 保留所有权利。',
+  }
+};
+
+function switchLang(lang) {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang] && i18n[lang][key]) {
+      el.textContent = i18n[lang][key];
+    }
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (i18n[lang] && i18n[lang][key]) {
+      el.innerHTML = i18n[lang][key];
+    }
+  });
+  // Update lang switcher buttons
+  const enBtn = document.getElementById('lang-en');
+  const zhBtn = document.getElementById('lang-zh');
+  if (lang === 'en') {
+    enBtn.style.background = 'var(--accent)'; enBtn.style.color = '#fff'; enBtn.style.fontWeight = '600';
+    zhBtn.style.background = 'var(--surface)'; zhBtn.style.color = 'var(--text-muted)'; zhBtn.style.fontWeight = '500';
+  } else {
+    zhBtn.style.background = 'var(--accent)'; zhBtn.style.color = '#fff'; zhBtn.style.fontWeight = '600';
+    enBtn.style.background = 'var(--surface)'; enBtn.style.color = 'var(--text-muted)'; enBtn.style.fontWeight = '500';
+  }
+  document.documentElement.lang = lang;
+  localStorage.setItem('talksift-lang', lang);
+
+  // Update featured card badge
+  const featuredCard = document.querySelector('.price-card.featured');
+  if (featuredCard) {
+    featuredCard.setAttribute('data-popular', lang === 'zh' ? '热门' : 'POPULAR');
+  }
+}
+
+// Init language from localStorage
+(function() {
+  const saved = localStorage.getItem('talksift-lang');
+  if (saved && saved !== 'en') switchLang(saved);
+})();
 </script>
 </body>
 </html>
