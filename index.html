@@ -246,7 +246,7 @@ section { padding: 120px 0; }
   font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;
   color: var(--text); letter-spacing: -0.02em;
 }
-.feature-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+.feature-card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
 
 /* ── How it works ── */
 .how-section { background: var(--bg-warm); }
@@ -343,7 +343,7 @@ section { padding: 120px 0; }
   opacity: 0;
 }
 .faq-item.open .faq-a { opacity: 1; }
-.faq-a p { padding: 0 0 20px; color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+.faq-a p { padding: 0 0 20px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
 
 /* ── CTA banner ── */
 .cta-banner {
@@ -421,7 +421,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.2.1/TalkSift.dmg" class="btn-primary" data-i18n="hero.downloadMac" onclick="setTimeout(()=>document.getElementById('install-guide').scrollIntoView({behavior:'smooth'}),1500)">⬇ Download for Mac</a>
         <button class="btn-secondary" data-i18n="hero.joinWaitlist" onclick="document.getElementById('win-waitlist').style.display='flex'">🪟 Join Waitlist for Windows</button>
       </div>
-      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;" data-i18n-html="hero.firstTimeHint">⚠️ First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
+      <p style="font-size:12px; color:var(--text-muted); margin-top:10px;" data-i18n-html="hero.firstTimeHint">First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
       <form class="waitlist-inline" id="win-waitlist" style="display:none;" onsubmit="return handleWaitlist(event)">
         <input type="email" id="waitlist-email" placeholder="you@email.com" required>
         <button type="submit" class="btn-primary btn-sm">Join Waitlist →</button>
@@ -435,11 +435,11 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 
       <!-- Example 1: Meeting -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; margin-bottom:24px; border-radius:16px; align-items:stretch; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-        <div style="background:#f5f5f0; padding:28px 32px;">
+        <div style="background:#f5f5f0; padding:28px 32px; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:700; margin-bottom:12px;">🎙 You say</div>
           <p style="font-size:15px; color:#888; line-height:1.8; font-style:italic;">"Um, so like, I was thinking we should, uh, you know, maybe move the meeting to... wait no, not Tuesday, Wednesday. Yeah, Wednesday works better."</p>
         </div>
-        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e;">
+        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:700; margin-bottom:12px;">✨ TalkSift writes</div>
           <p style="font-size:15px; color:#1a1a1a; line-height:1.8; font-weight:500;">"Let's move the meeting to Wednesday."</p>
         </div>
@@ -447,11 +447,11 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 
       <!-- Example 2: Email draft -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; margin-bottom:24px; border-radius:16px; align-items:stretch; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-        <div style="background:#f5f5f0; padding:28px 32px;">
+        <div style="background:#f5f5f0; padding:28px 32px; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:700; margin-bottom:12px;">🎙 You say</div>
           <p style="font-size:15px; color:#888; line-height:1.8; font-style:italic;">"OK so basically, the thing is, uh, the client wants the report by Friday, and I think, well actually, we need to also include the Q4 numbers, not just Q3, because they specifically asked about year-over-year growth..."</p>
         </div>
-        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e;">
+        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:700; margin-bottom:12px;">✨ TalkSift writes</div>
           <p style="font-size:15px; color:#1a1a1a; line-height:1.8; font-weight:500;">"The client needs the report by Friday. Include both Q3 and Q4 numbers — they want year-over-year growth data."</p>
         </div>
@@ -461,11 +461,11 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <span style="font-size:12px; color:#999; letter-spacing:1px; text-transform:uppercase;">🌏 Multilingual — English &amp; Chinese supported, more coming soon</span>
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; border-radius:16px; align-items:stretch; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-        <div style="background:#f5f5f0; padding:28px 32px;">
+        <div style="background:#f5f5f0; padding:28px 32px; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:700; margin-bottom:12px;">🎙 You say</div>
           <p style="font-size:15px; color:#888; line-height:1.8; font-style:italic;">"嗯，那个，就是说，我觉得这个方案吧，可能，啊，不太行，就是成本太高了，然后时间也不够，不对，时间倒还行，主要是成本的问题。"</p>
         </div>
-        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e;">
+        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:700; margin-bottom:12px;">✨ TalkSift writes</div>
           <p style="font-size:15px; color:#1a1a1a; line-height:1.8; font-weight:500;">"这个方案不太行，主要是成本太高。时间倒还可以。"</p>
         </div>
@@ -473,11 +473,11 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 
       <!-- Example 4: Mixed English + Chinese -->
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0; margin-top:24px; border-radius:16px; align-items:stretch; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-        <div style="background:#f5f5f0; padding:28px 32px;">
+        <div style="background:#f5f5f0; padding:28px 32px; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#d4836b; font-weight:700; margin-bottom:12px;">🎙 You say <span style="font-size:9px; color:#999; letter-spacing:1px; margin-left:8px;">MIXED LANGUAGE</span></div>
           <p style="font-size:15px; color:#888; line-height:1.8; font-style:italic;">"这个project的deadline是next Friday，但是我觉得we need more time，至少要再加two more days，你跟PM confirm一下。"</p>
         </div>
-        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e;">
+        <div style="background:#f0faf6; padding:28px 32px; border-left:4px solid #3d8b6e; text-align:left;">
           <div style="font-size:11px; text-transform:uppercase; letter-spacing:2px; color:#3d8b6e; font-weight:700; margin-bottom:12px;">✨ TalkSift writes</div>
           <p style="font-size:15px; color:#1a1a1a; line-height:1.8; font-weight:500;">"The project deadline is next Friday, but we need at least two more days. Please confirm with the PM."</p>
         </div>
@@ -582,7 +582,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       </div>
       <div class="price-card">
         <h3 data-i18n="pricing.monthly.name">Pro Monthly</h3>
-        <div class="price-amount" data-i18n-html="pricing.monthly.price">$15 <span>/ month</span></div>
+        <div class="price-amount" data-i18n-html="pricing.monthly.price">$10 <span>/ month</span></div>
         <p class="price-note" data-i18n="pricing.monthly.note">Cancel anytime</p>
         <ul class="price-features">
           <li data-i18n="pricing.monthly.f1">Unlimited distillations</li>
@@ -806,7 +806,7 @@ const i18n = {
     'hero.subtitle': 'Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.',
     'hero.downloadMac': '⬇ Download for Mac',
     'hero.joinWaitlist': '🪟 Join Waitlist for Windows',
-    'hero.firstTimeHint': '⚠️ First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.',
+    'hero.firstTimeHint': 'First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.',
     'hero.badge': 'macOS · English & Chinese · Free to start',
     'features.label': 'Features',
     'features.title': 'Speak naturally. Get professional text.',
@@ -846,7 +846,7 @@ const i18n = {
     'pricing.free.f4': 'Clipboard output',
     'pricing.free.btn': 'Download Free',
     'pricing.monthly.name': 'Pro Monthly',
-    'pricing.monthly.price': '$15 <span>/ month</span>',
+    'pricing.monthly.price': '$10 <span>/ month</span>',
     'pricing.monthly.note': 'Cancel anytime',
     'pricing.monthly.f1': 'Unlimited distillations',
     'pricing.monthly.f2': 'Custom tone & style profiles',
@@ -947,7 +947,7 @@ const i18n = {
     'pricing.free.f4': '剪贴板输出',
     'pricing.free.btn': '免费下载',
     'pricing.monthly.name': '专业月付',
-    'pricing.monthly.price': '$15 <span>/ 月</span>',
+    'pricing.monthly.price': '$10 <span>/ 月</span>',
     'pricing.monthly.note': '随时取消',
     'pricing.monthly.f1': '无限次提炼',
     'pricing.monthly.f2': '自定义语气和风格',
