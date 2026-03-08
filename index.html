@@ -87,7 +87,7 @@ nav .container {
   font-weight: 800; font-size: 1.2rem; letter-spacing: -0.03em; color: var(--text);
 }
 .logo span { color: var(--accent); }
-.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
 .nav-links a.nav-link {
   font-size: 0.875rem; color: var(--text-muted); font-weight: 500;
   text-decoration: none; transition: color 0.2s;
@@ -100,6 +100,12 @@ nav a.nav-cta {
   box-shadow: 0 1px 3px rgba(61, 139, 110, 0.3);
 }
 nav a.nav-cta:hover { background: var(--accent-light); text-decoration: none; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(61, 139, 110, 0.3); }
+nav a.nav-cta-win {
+  background: var(--surface); color: var(--text-secondary); border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+nav a.nav-cta-win:hover { background: var(--bg-warm); color: var(--text); box-shadow: 0 3px 8px rgba(0,0,0,0.08); }
+nav a.nav-cta-win .windows-icon { width: 14px; height: 14px; vertical-align: -2px; margin-right: 2px; }
 
 /* ── Hero ── */
 .hero {
@@ -333,6 +339,7 @@ section { padding: 120px 0; }
 .price-features li::before { content: '✓ '; color: var(--accent); font-weight: 600; }
 .price-card .btn-primary { width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px; }
 .price-card .btn-outline { width: 100%; justify-content: center; font-size: 0.9rem; padding: 12px; }
+.price-card .btn-outline + .btn-outline { margin-top: 8px; }
 
 /* ── FAQ ── */
 .faq-list { max-width: 640px; margin: 0 auto; }
@@ -508,7 +515,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <button onclick="switchLang('en')" id="lang-en" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:600; background:var(--accent); color:#fff; font-family:inherit;">EN</button>
         <button onclick="switchLang('zh')" id="lang-zh" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:500; background:var(--surface); color:var(--text-muted); font-family:inherit;">中文</button>
       </div>
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="nav-cta" data-i18n="nav.download">⬇ Download for Mac</a>
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="nav-cta" data-i18n="nav.downloadMac">⬇ Mac</a>
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="nav-cta nav-cta-win" data-i18n-html="nav.downloadWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Win</a>
     </div>
   </div>
 </nav>
@@ -669,7 +677,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.free.f3">Filler removal + corrections</li>
           <li data-i18n="pricing.free.f4">Clipboard output</li>
         </ul>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-outline" data-i18n="pricing.free.btn">Download Free</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-outline" data-i18n="pricing.free.btnMac">⬇ Mac</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="btn-outline" data-i18n-html="pricing.free.btnWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Windows</a>
       </div>
       <div class="price-card">
         <h3 data-i18n="pricing.monthly.name">Pro Monthly</h3>
@@ -897,7 +906,10 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
   <div class="container">
     <h2 data-i18n="cta.title">Stop typing what you could just say.</h2>
     <p data-i18n="cta.subtitle">Download TalkSift and start talking.</p>
-    <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-primary" data-i18n="cta.btn">⬇ Download for Mac</a>
+    <div class="hero-actions" style="margin-bottom:0;">
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-primary" data-i18n="cta.btnMac">⬇ Download for Mac</a>
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="btn-secondary" data-i18n-html="cta.btnWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>Download for Windows</span></a>
+    </div>
   </div>
 </section>
 
@@ -990,7 +1002,8 @@ const i18n = {
     'nav.features': 'Features',
     'nav.pricing': 'Pricing',
     'nav.faq': 'FAQ',
-    'nav.download': '⬇ Download for Mac',
+    'nav.downloadMac': '⬇ Mac',
+    'nav.downloadWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Win',
     'hero.title': 'Voice to polished text.<br><span class="accent">Instantly.</span>',
     'hero.subtitle': 'Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.',
     'hero.downloadMac': '⬇ Download for Mac',
@@ -1033,7 +1046,8 @@ const i18n = {
     'pricing.free.f2': 'English & Chinese',
     'pricing.free.f3': 'Filler removal + corrections',
     'pricing.free.f4': 'Clipboard output',
-    'pricing.free.btn': 'Download Free',
+    'pricing.free.btnMac': '⬇ Mac',
+    'pricing.free.btnWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Windows',
     'pricing.monthly.name': 'Pro Monthly',
     'pricing.monthly.price': '$10 <span>/ month</span>',
     'pricing.monthly.note': 'Cancel anytime',
@@ -1100,7 +1114,8 @@ const i18n = {
     'install.windows.faq.smartscreen': '<strong>Windows SmartScreen blocked the app</strong> → Click <strong>"More info"</strong> → <strong>"Run anyway"</strong>. The app is signed and safe to run.',
     'cta.title': 'Stop typing what you could just say.',
     'cta.subtitle': 'Download TalkSift and start talking.',
-    'cta.btn': '⬇ Download for Mac',
+    'cta.btnMac': '⬇ Download for Mac',
+    'cta.btnWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>Download for Windows</span>',
     'footer.privacy': 'Privacy Policy',
     'footer.contact': 'Contact',
     'footer.copyright': '© 2026 TalkSift. All rights reserved.',
@@ -1109,7 +1124,8 @@ const i18n = {
     'nav.features': '功能',
     'nav.pricing': '价格',
     'nav.faq': '常见问题',
-    'nav.download': '⬇ 下载 Mac 版',
+    'nav.downloadMac': '⬇ Mac',
+    'nav.downloadWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Win',
     'hero.title': '语音变成精炼文字。<br><span class="accent">即刻完成。</span>',
     'hero.subtitle': '只管说。TalkSift 帮你去掉口头禅、重复和跑题——几秒内给你干净、可直接使用的文字。',
     'hero.downloadMac': '⬇ 下载 Mac 版',
@@ -1152,7 +1168,8 @@ const i18n = {
     'pricing.free.f2': '中英双语',
     'pricing.free.f3': '去除口头禅 + 纠正检测',
     'pricing.free.f4': '剪贴板输出',
-    'pricing.free.btn': '免费下载',
+    'pricing.free.btnMac': '⬇ Mac',
+    'pricing.free.btnWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Windows',
     'pricing.monthly.name': '专业月付',
     'pricing.monthly.price': '$10 <span>/ 月</span>',
     'pricing.monthly.note': '随时取消',
@@ -1219,7 +1236,8 @@ const i18n = {
     'install.windows.faq.smartscreen': '<strong>Windows SmartScreen 阻止</strong> → 点击<strong>“更多信息”</strong> → <strong>“仍要运行”</strong>。应用已签名，安全无毒。',
     'cta.title': '别再打字了，说就行。',
     'cta.subtitle': '下载 TalkSift，开口即用。',
-    'cta.btn': '⬇ 下载 Mac 版',
+    'cta.btnMac': '⬇ 下载 Mac 版',
+    'cta.btnWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>下载 Windows 版</span>',
     'footer.privacy': '隐私政策',
     'footer.contact': '联系我们',
     'footer.copyright': '© 2026 TalkSift. 保留所有权利。',
