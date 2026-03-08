@@ -15,6 +15,20 @@
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+.windows-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.windows-icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  fill: currentColor;
+}
+
 :root {
   --bg: #fafaf9;
   --bg-warm: #f5f4f1;
@@ -359,6 +373,86 @@ section { padding: 120px 0; }
   color: var(--text-muted); font-size: 1rem; margin-bottom: 32px;
 }
 
+/* ── Install guide tabs ── */
+.install-tabs {
+  display: inline-flex;
+  gap: 10px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin: 0 auto 28px;
+  flex-wrap: wrap;
+}
+
+.install-tab {
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.install-tab.active {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(61, 139, 110, 0.2);
+}
+
+.install-panel {
+  display: none;
+}
+
+.install-panel.active {
+  display: block;
+}
+
+.install-callout {
+  margin: 24px 0 0;
+  padding: 16px 18px;
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: 14px;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.install-callout strong {
+  color: var(--text);
+}
+
+.install-faq-box {
+  margin-top: 28px;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.install-faq-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--text);
+}
+
+.install-faq-box ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--text-muted);
+}
+
+.install-faq-box li + li {
+  margin-top: 12px;
+}
+
 /* ── Footer ── */
 footer {
   border-top: 1px solid var(--border-light); padding: 40px 0;
@@ -387,6 +481,14 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
   .waitlist-inline { flex-direction: column; }
   .waitlist-inline input { min-width: unset; }
   .feature-card { padding: 24px 20px; }
+  .install-tabs {
+    display: flex;
+    width: 100%;
+  }
+  .install-tab {
+    flex: 1;
+    justify-content: center;
+  }
 }
 </style>
 </head>
@@ -406,7 +508,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <button onclick="switchLang('en')" id="lang-en" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:600; background:var(--accent); color:#fff; font-family:inherit;">EN</button>
         <button onclick="switchLang('zh')" id="lang-zh" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:500; background:var(--surface); color:var(--text-muted); font-family:inherit;">中文</button>
       </div>
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.3.9/TalkSift-v0.3.9.dmg" class="nav-cta" data-i18n="nav.download">⬇ Download for Mac</a>
+      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="nav-cta" data-i18n="nav.download">⬇ Download for Mac</a>
     </div>
   </div>
 </nav>
@@ -418,8 +520,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <p class="sub" data-i18n="hero.subtitle">Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.</p>
     <div id="waitlist">
       <div class="hero-actions">
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.3.9/TalkSift-v0.3.9.dmg" class="btn-primary" data-i18n="hero.downloadMac">⬇ Download for Mac</a>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.3.9/TalkSift-Windows-v0.3.9.zip" class="btn-secondary" data-i18n="hero.downloadWin">🪟 Download for Windows</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-primary" data-i18n="hero.downloadMac">⬇ Download for Mac</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="btn-secondary js-windows-download" data-install-target="windows" data-i18n-html="hero.downloadWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>Download for Windows</span></a>
       </div>
       <p style="font-size:12px; color:var(--text-muted); margin-top:10px;" data-i18n-html="hero.firstTimeHint">First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
     </div>
@@ -567,7 +669,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.free.f3">Filler removal + corrections</li>
           <li data-i18n="pricing.free.f4">Clipboard output</li>
         </ul>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.3.9/TalkSift-v0.3.9.dmg" class="btn-outline" data-i18n="pricing.free.btn">Download Free</a>
+        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-outline" data-i18n="pricing.free.btn">Download Free</a>
       </div>
       <div class="price-card">
         <h3 data-i18n="pricing.monthly.name">Pro Monthly</h3>
@@ -640,93 +742,152 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
 <section id="install-guide" style="padding:100px 0; background:var(--bg-warm);">
   <div class="container" style="max-width:720px;">
     <p class="section-label" data-i18n="install.label">Installation Guide</p>
-    <h2 class="section-title" data-i18n="install.title">How to install TalkSift on macOS</h2>
-    <p class="section-sub" data-i18n="install.subtitle">Since TalkSift isn't on the App Store yet, macOS may show a security warning. Here's how to open it — takes 10 seconds.</p>
+    <h2 class="section-title" data-i18n="install.title">How to install TalkSift</h2>
+    <p class="section-sub" data-i18n="install.subtitle">Pick your platform below for the right installation steps.</p>
 
-    <div style="display:flex; flex-direction:column; gap:32px; margin-top:40px;">
-
-      <!-- Step 1 -->
-      <div style="display:flex; gap:20px; align-items:flex-start;">
-        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">1</div>
-        <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step1.title">Open the DMG file</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.step1.desc">Double-click the downloaded <strong>TalkSift.dmg</strong> and drag TalkSift to your Applications folder.</p>
-        </div>
+    <div style="display:flex; justify-content:center;">
+      <div class="install-tabs" role="tablist" aria-label="Installation guide tabs">
+        <button class="install-tab active" type="button" data-install-tab="mac" data-i18n="install.tab.mac">macOS</button>
+        <button class="install-tab" type="button" data-install-tab="windows" data-i18n="install.tab.windows">Windows</button>
       </div>
+    </div>
 
-      <!-- Step 2 -->
-      <div style="display:flex; gap:20px; align-items:flex-start;">
-        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">2</div>
-        <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step2.title">Try to open TalkSift</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.step2.desc">Double-click <strong>TalkSift</strong> in your Applications folder. macOS will show a warning — this is normal. Click <strong>"Done"</strong> to close it. (Don't worry, we'll fix this in the next step.)</p>
-        </div>
-      </div>
+    <div class="install-callout" id="install-guide-callout" data-i18n-html="install.callout">First time on Windows? Download the ZIP, then switch to the <strong>Windows</strong> tab for the setup guide.</div>
 
-      <!-- Step 3 -->
-      <div style="display:flex; gap:20px; align-items:flex-start;">
-        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">3</div>
-        <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step3.title">Open System Settings</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step3.desc">
-            Click the <strong>Apple menu </strong> in the top-left corner of your screen, then click <strong>"System Settings"</strong>.
-          </p>
-          <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:260px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
-            <p style="color:#fff; font-size:13px; line-height:2;">
-               About This Mac<br>
-              <span style="background:#3d8b6e; padding:2px 8px; border-radius:4px; font-weight:600;">⚙️ System Settings...</span><br>
-               App Store...<br>
-               Recent Items
-            </p>
+    <div class="install-panel active" data-install-panel="mac">
+      <div style="display:flex; flex-direction:column; gap:32px; margin-top:40px;">
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">1</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step1.title">Open the DMG file</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.step1.desc">Double-click the downloaded <strong>TalkSift.dmg</strong> and drag TalkSift to your Applications folder.</p>
           </div>
         </div>
-      </div>
 
-      <!-- Step 4 -->
-      <div style="display:flex; gap:20px; align-items:flex-start;">
-        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">4</div>
-        <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step4.title">Go to Privacy & Security</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step4.desc">
-            In the left sidebar, scroll down and click <strong>"Privacy & Security"</strong>.
-          </p>
-          <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:240px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
-            <p style="color:#999; font-size:12px; line-height:2.2;">
-              General<br>Appearance<br>...<br>
-              <span style="background:#3d8b6e; color:#fff; padding:2px 8px; border-radius:4px; font-weight:600;">🔒 Privacy & Security</span><br>
-              Desktop & Dock
-            </p>
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">2</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step2.title">Try to open TalkSift</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.step2.desc">Double-click <strong>TalkSift</strong> in your Applications folder. macOS will show a warning — this is normal. Click <strong>"Done"</strong> to close it. (Don't worry, we'll fix this in the next step.)</p>
           </div>
         </div>
-      </div>
 
-      <!-- Step 5 -->
-      <div style="display:flex; gap:20px; align-items:flex-start;">
-        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">5</div>
-        <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step5.title">Click "Open Anyway"</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step5.desc">
-            Scroll down on the right side. You'll see a message saying <strong>"TalkSift" was blocked</strong>. Click the <strong>"Open Anyway"</strong> button. Enter your Mac password when asked.
-          </p>
-          <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:420px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
-            <p style="color:#999; font-size:11px; margin-bottom:10px;">SECURITY</p>
-            <div style="background:#3a3a3e; border-radius:8px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
-              <p style="color:#fff; font-size:13px;">"TalkSift" was blocked from opening</p>
-              <span style="background:var(--accent); color:#fff; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; white-space:nowrap;">👆 Open Anyway</span>
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">3</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step3.title">Open System Settings</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step3.desc">
+              Click the <strong>Apple menu </strong> in the top-left corner of your screen, then click <strong>"System Settings"</strong>.
+            </p>
+            <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:260px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+              <p style="color:#fff; font-size:13px; line-height:2;">
+                 About This Mac<br>
+                <span style="background:#3d8b6e; padding:2px 8px; border-radius:4px; font-weight:600;">⚙️ System Settings...</span><br>
+                 App Store...<br>
+                 Recent Items
+              </p>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Step 6 -->
-      <div style="display:flex; gap:20px; align-items:flex-start;">
-        <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">✓</div>
-        <div>
-          <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step6.title">You're all set!</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n="install.step6.desc">TalkSift will open. You only need to do this once — next time just double-click to open.</p>
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">4</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step4.title">Go to Privacy & Security</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step4.desc">
+              In the left sidebar, scroll down and click <strong>"Privacy & Security"</strong>.
+            </p>
+            <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:240px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+              <p style="color:#999; font-size:12px; line-height:2.2;">
+                General<br>Appearance<br>...<br>
+                <span style="background:#3d8b6e; color:#fff; padding:2px 8px; border-radius:4px; font-weight:600;">🔒 Privacy & Security</span><br>
+                Desktop & Dock
+              </p>
+            </div>
+          </div>
         </div>
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">5</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step5.title">Click "Open Anyway"</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.step5.desc">
+              Scroll down on the right side. You'll see a message saying <strong>"TalkSift" was blocked</strong>. Click the <strong>"Open Anyway"</strong> button. Enter your Mac password when asked.
+            </p>
+            <div style="margin-top:8px; background:#2a2a2e; border-radius:12px; padding:16px 20px; max-width:420px; box-shadow:0 8px 30px rgba(0,0,0,0.2);">
+              <p style="color:#999; font-size:11px; margin-bottom:10px;">SECURITY</p>
+              <div style="background:#3a3a3e; border-radius:8px; padding:12px 14px; display:flex; justify-content:space-between; align-items:center;">
+                <p style="color:#fff; font-size:13px;">"TalkSift" was blocked from opening</p>
+                <span style="background:var(--accent); color:#fff; padding:6px 14px; border-radius:6px; font-size:12px; font-weight:600; white-space:nowrap;">👆 Open Anyway</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">✓</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.step6.title">You're all set!</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n="install.step6.desc">TalkSift will open. You only need to do this once — next time just double-click to open.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="install-panel" data-install-panel="windows">
+      <div style="display:flex; flex-direction:column; gap:32px; margin-top:40px;">
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">1</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.windows.step1.title">Download the ZIP file</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n="install.windows.step1.desc">Download the latest Windows ZIP release for TalkSift.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">2</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.windows.step2.title">Extract the ZIP first</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.windows.step2.desc">Right-click the ZIP file and choose <strong>"Extract All"</strong>. <strong>Do not</strong> double-click and run TalkSift directly from inside the ZIP.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">3</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.windows.step3.title">Open the extracted folder</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.windows.step3.desc">Open the extracted <strong>TalkSift</strong> folder.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">4</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.windows.step4.title">Run TalkSift.exe</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.6;" data-i18n-html="install.windows.step4.desc">Double-click <strong>TalkSift.exe</strong> to launch the app.</p>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:20px; align-items:flex-start;">
+          <div style="min-width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:1.1rem;">5</div>
+          <div>
+            <h3 style="font-size:1rem; font-weight:700; margin-bottom:6px;" data-i18n="install.windows.step5.title">If SmartScreen appears, allow it</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; line-height:1.8;" data-i18n-html="install.windows.step5.desc">If Windows SmartScreen blocks the app, click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.</p>
+          </div>
+        </div>
+
       </div>
 
+      <div class="install-faq-box">
+        <h3 data-i18n="install.windows.faq.title">Common issues</h3>
+        <ul>
+          <li data-i18n-html="install.windows.faq.dll"> <strong>"Failed to load Python DLL"</strong> → Install the <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" rel="noopener noreferrer">Microsoft Visual C++ Redistributable</a>.</li>
+          <li data-i18n-html="install.windows.faq.smartscreen"><strong>Windows SmartScreen blocked the app</strong> → Click <strong>"More info"</strong> → <strong>"Run anyway"</strong>. The app is signed and safe to run.</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -736,7 +897,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
   <div class="container">
     <h2 data-i18n="cta.title">Stop typing what you could just say.</h2>
     <p data-i18n="cta.subtitle">Download TalkSift and start talking.</p>
-    <a href="https://github.com/yinshanlake/talksift-releases/releases/download/v0.3.9/TalkSift-v0.3.9.dmg" class="btn-primary" data-i18n="cta.btn">⬇ Download for Mac</a>
+    <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-primary" data-i18n="cta.btn">⬇ Download for Mac</a>
   </div>
 </section>
 
@@ -786,6 +947,43 @@ function handleWaitlist(e) {
   return false;
 }
 
+function setInstallTab(tab) {
+  const isWindows = tab === 'windows';
+  document.querySelectorAll('[data-install-tab]').forEach(button => {
+    button.classList.toggle('active', button.dataset.installTab === tab);
+  });
+  document.querySelectorAll('[data-install-panel]').forEach(panel => {
+    panel.classList.toggle('active', panel.dataset.installPanel === tab);
+  });
+
+  const callout = document.getElementById('install-guide-callout');
+  if (callout) {
+    const lang = document.documentElement.lang === 'zh' ? 'zh' : 'en';
+    const key = isWindows ? 'install.callout.windows' : 'install.callout.mac';
+    if (i18n[lang] && i18n[lang][key]) {
+      callout.innerHTML = i18n[lang][key];
+    }
+  }
+}
+
+function setupInstallGuide() {
+  document.querySelectorAll('[data-install-tab]').forEach(button => {
+    button.addEventListener('click', () => setInstallTab(button.dataset.installTab));
+  });
+
+  document.querySelectorAll('.js-windows-download').forEach(link => {
+    link.addEventListener('click', () => {
+      setInstallTab('windows');
+      const guide = document.getElementById('install-guide');
+      if (guide) {
+        requestAnimationFrame(() => {
+          guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+    });
+  });
+}
+
 // i18n
 const i18n = {
   en: {
@@ -796,7 +994,7 @@ const i18n = {
     'hero.title': 'Voice to polished text.<br><span class="accent">Instantly.</span>',
     'hero.subtitle': 'Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.',
     'hero.downloadMac': '⬇ Download for Mac',
-    'hero.downloadWin': '🪟 Download for Windows',
+    'hero.downloadWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>Download for Windows</span>',
     'hero.firstTimeHint': 'First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.',
     'hero.badge': 'macOS & Windows · English & Chinese · Free to start',
     'features.label': 'Features',
@@ -868,8 +1066,13 @@ const i18n = {
     'faq.q7': 'Is TalkSift available now?',
     'faq.a7': "Yes! TalkSift is available for macOS right now. Download it for free and start using it today. Windows is also available — download both versions above!",
     'install.label': 'Installation Guide',
-    'install.title': 'How to install TalkSift on macOS',
-    'install.subtitle': "Since TalkSift isn't on the App Store yet, macOS may show a security warning. Here's how to open it — takes 10 seconds.",
+    'install.title': 'How to install TalkSift',
+    'install.subtitle': 'Pick your platform below for the right installation steps.',
+    'install.tab.mac': 'macOS',
+    'install.tab.windows': 'Windows',
+    'install.callout': 'First time on Windows? Download the ZIP, then switch to the <strong>Windows</strong> tab for the setup guide.',
+    'install.callout.mac': 'On macOS, if you see a security warning, follow the steps below to open TalkSift safely.',
+    'install.callout.windows': 'First time on Windows? After downloading, follow the <strong>Windows</strong> steps below before opening TalkSift.',
     'install.step1.title': 'Open the DMG file',
     'install.step1.desc': 'Double-click the downloaded <strong>TalkSift.dmg</strong> and drag TalkSift to your Applications folder.',
     'install.step2.title': 'Try to open TalkSift',
@@ -882,6 +1085,19 @@ const i18n = {
     'install.step5.desc': 'Scroll down on the right side. You\'ll see a message saying <strong>"TalkSift" was blocked</strong>. Click the <strong>"Open Anyway"</strong> button. Enter your Mac password when asked.',
     'install.step6.title': "You're all set!",
     'install.step6.desc': 'TalkSift will open. You only need to do this once — next time just double-click to open.',
+    'install.windows.step1.title': 'Download the ZIP file',
+    'install.windows.step1.desc': 'Download the latest Windows ZIP release for TalkSift.',
+    'install.windows.step2.title': 'Extract the ZIP first',
+    'install.windows.step2.desc': 'Right-click the ZIP file and choose <strong>"Extract All"</strong>. <strong>Do not</strong> double-click and run TalkSift directly from inside the ZIP.',
+    'install.windows.step3.title': 'Open the extracted folder',
+    'install.windows.step3.desc': 'Open the extracted <strong>TalkSift</strong> folder.',
+    'install.windows.step4.title': 'Run TalkSift.exe',
+    'install.windows.step4.desc': 'Double-click <strong>TalkSift.exe</strong> to launch the app.',
+    'install.windows.step5.title': 'If SmartScreen appears, allow it',
+    'install.windows.step5.desc': 'If Windows SmartScreen blocks the app, click <strong>"More info"</strong> and then <strong>"Run anyway"</strong>.',
+    'install.windows.faq.title': 'Common issues',
+    'install.windows.faq.dll': '<strong>"Failed to load Python DLL"</strong> → Install the <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" rel="noopener noreferrer">Microsoft Visual C++ Redistributable</a>.',
+    'install.windows.faq.smartscreen': '<strong>Windows SmartScreen blocked the app</strong> → Click <strong>"More info"</strong> → <strong>"Run anyway"</strong>. The app is signed and safe to run.',
     'cta.title': 'Stop typing what you could just say.',
     'cta.subtitle': 'Download TalkSift and start talking.',
     'cta.btn': '⬇ Download for Mac',
@@ -897,7 +1113,7 @@ const i18n = {
     'hero.title': '语音变成精炼文字。<br><span class="accent">即刻完成。</span>',
     'hero.subtitle': '只管说。TalkSift 帮你去掉口头禅、重复和跑题——几秒内给你干净、可直接使用的文字。',
     'hero.downloadMac': '⬇ 下载 Mac 版',
-    'hero.downloadWin': '🪟 下载 Windows 版',
+    'hero.downloadWin': '<span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>下载 Windows 版</span>',
     'hero.firstTimeHint': '⚠️ 第一次使用？请查看下方的<a href="#install-guide" style="color:var(--accent);">安装指南</a>。',
     'hero.badge': 'macOS & Windows · 中英文 · 免费开始',
     'features.label': '功能',
@@ -969,8 +1185,13 @@ const i18n = {
     'faq.q7': 'TalkSift 可以用了吗？',
     'faq.a7': '可以！TalkSift macOS 和 Windows 版现在都可以免费下载使用。点击上方下载按钮即可开始！',
     'install.label': '安装指南',
-    'install.title': '如何在 macOS 上安装 TalkSift',
-    'install.subtitle': '由于 TalkSift 尚未上架 App Store，macOS 可能会显示安全警告。以下是打开方式——只需 10 秒。',
+    'install.title': '如何安装 TalkSift',
+    'install.subtitle': '请选择你的系统，查看对应的安装步骤。',
+    'install.tab.mac': 'macOS',
+    'install.tab.windows': 'Windows',
+    'install.callout': '第一次使用 Windows 版？下载 ZIP 后，请切换到<strong>Windows</strong>标签查看安装说明。',
+    'install.callout.mac': '如果 macOS 出现安全提示，按下方步骤操作即可安全打开 TalkSift。',
+    'install.callout.windows': '第一次使用 Windows 版？下载后请先按下方<strong>Windows</strong>步骤安装，再打开 TalkSift。',
     'install.step1.title': '打开 DMG 文件',
     'install.step1.desc': '双击下载的 <strong>TalkSift.dmg</strong>，将 TalkSift 拖入"应用程序"文件夹。',
     'install.step2.title': '尝试打开 TalkSift',
@@ -983,6 +1204,19 @@ const i18n = {
     'install.step5.desc': '在右侧向下滚动。你会看到<strong>"TalkSift" 已被阻止打开</strong>的提示。点击<strong>"仍要打开"</strong>按钮。系统会要求输入 Mac 密码。',
     'install.step6.title': '大功告成！',
     'install.step6.desc': 'TalkSift 将会打开。你只需要做这一次——以后双击就能直接打开。',
+    'install.windows.step1.title': '下载 ZIP 文件',
+    'install.windows.step1.desc': '下载 TalkSift 最新的 Windows ZIP 安装包。',
+    'install.windows.step2.title': '先解压 ZIP 文件',
+    'install.windows.step2.desc': '右键 ZIP 文件，选择<strong>“全部解压”</strong>。<strong>不要</strong>直接在 ZIP 压缩包内双击运行 TalkSift。',
+    'install.windows.step3.title': '打开解压后的文件夹',
+    'install.windows.step3.desc': '打开解压后的 <strong>TalkSift</strong> 文件夹。',
+    'install.windows.step4.title': '运行 TalkSift.exe',
+    'install.windows.step4.desc': '双击 <strong>TalkSift.exe</strong> 启动应用。',
+    'install.windows.step5.title': '如果出现 SmartScreen 提示',
+    'install.windows.step5.desc': '如果 Windows SmartScreen 阻止运行，请点击<strong>“更多信息”</strong>，再点击<strong>“仍要运行”</strong>。',
+    'install.windows.faq.title': '常见问题',
+    'install.windows.faq.dll': '<strong>“Failed to load Python DLL”</strong> → 需要安装 <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe" target="_blank" rel="noopener noreferrer">Microsoft Visual C++ 运行库</a>。',
+    'install.windows.faq.smartscreen': '<strong>Windows SmartScreen 阻止</strong> → 点击<strong>“更多信息”</strong> → <strong>“仍要运行”</strong>。应用已签名，安全无毒。',
     'cta.title': '别再打字了，说就行。',
     'cta.subtitle': '下载 TalkSift，开口即用。',
     'cta.btn': '⬇ 下载 Mac 版',
@@ -1025,10 +1259,18 @@ function switchLang(lang) {
   }
 }
 
+setupInstallGuide();
+setInstallTab('mac');
+
 // Init language from localStorage
 (function() {
   const saved = localStorage.getItem('talksift-lang');
-  if (saved && saved !== 'en') switchLang(saved);
+  if (saved && saved !== 'en') {
+    switchLang(saved);
+  } else {
+    const callout = document.getElementById('install-guide-callout');
+    if (callout) callout.innerHTML = i18n.en['install.callout.mac'];
+  }
 })();
 </script>
 </body>
