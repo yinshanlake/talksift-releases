@@ -757,7 +757,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <div style="display:flex; justify-content:center;">
       <div class="install-tabs" role="tablist" aria-label="Installation guide tabs">
         <button class="install-tab active" type="button" data-install-tab="mac" data-i18n="install.tab.mac">macOS</button>
-        <button class="install-tab" type="button" data-install-tab="windows" data-i18n="install.tab.windows">Windows</button>
+        <button class="install-tab" type="button" data-install-tab="windows" data-i18n="install.tab.windows" style="display:none;">Windows</button>
       </div>
     </div>
 
@@ -845,7 +845,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
       </div>
     </div>
 
-    <div class="install-panel" data-install-panel="windows">
+    <div class="install-panel" data-install-panel="windows" style="display:none;">
       <div style="display:flex; flex-direction:column; gap:32px; margin-top:40px;">
 
         <div style="display:flex; gap:20px; align-items:flex-start;">
