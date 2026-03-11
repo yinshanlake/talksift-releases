@@ -516,7 +516,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <button onclick="switchLang('zh')" id="lang-zh" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:500; background:var(--surface); color:var(--text-muted); font-family:inherit;">中文</button>
       </div>
       <a href="https://api.talksift.app/download/mac" class="nav-cta" data-i18n="nav.downloadMac">⬇ Mac</a>
-      <a href="#" onclick="openWaitlist(); return false;" class="nav-cta nav-cta-win" data-i18n="nav.joinWaitlist">Join Waitlist</a>
+      <a href="#" onclick="openWaitlist(); return false;" class="nav-cta nav-cta-win" data-i18n="nav.joinWaitlist">Join Waitlist for Windows</a>
     </div>
   </div>
 </nav>
@@ -529,7 +529,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <div id="waitlist">
       <div class="hero-actions">
         <a href="https://api.talksift.app/download/mac" class="btn-primary" data-i18n="hero.downloadMac">⬇ Download for Mac</a>
-        <a href="#" onclick="openWaitlist(); return false;" class="btn-secondary" data-i18n="hero.joinWaitlist">Join Waitlist</a>
+        <a href="#" onclick="openWaitlist(); return false;" class="btn-secondary" data-i18n="hero.joinWaitlist">Join Waitlist for Windows</a>
       </div>
       <p style="font-size:12px; color:var(--text-muted); margin-top:10px;" data-i18n-html="hero.firstTimeHint">First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
     </div>
@@ -678,7 +678,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.free.f4">Clipboard output</li>
         </ul>
         <a href="https://api.talksift.app/download/mac" class="btn-outline" data-i18n="pricing.free.btnMac">⬇ Mac</a>
-        <a href="#" onclick="openWaitlist(); return false;" class="btn-outline" data-i18n="pricing.free.joinWaitlist">Join Waitlist</a>
+        <a href="#" onclick="openWaitlist(); return false;" class="btn-outline" data-i18n="pricing.free.joinWaitlist">Join Waitlist for Windows</a>
       </div>
       <div class="price-card">
         <h3 data-i18n="pricing.monthly.name">Pro Monthly</h3>
@@ -908,7 +908,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <p data-i18n="cta.subtitle">Download TalkSift and start talking.</p>
     <div class="hero-actions" style="margin-bottom:0;">
       <a href="https://api.talksift.app/download/mac" class="btn-primary" data-i18n="cta.btnMac">⬇ Download for Mac</a>
-      <a href="#" onclick="openWaitlist(); return false;" class="btn-secondary" data-i18n="cta.joinWaitlist">Join Waitlist</a>
+      <a href="#" onclick="openWaitlist(); return false;" class="btn-secondary" data-i18n="cta.joinWaitlist">Join Waitlist for Windows</a>
     </div>
   </div>
 </section>
@@ -1331,7 +1331,7 @@ setInstallTab('mac');
   <div class="modal-overlay" onclick="closeWaitlist()"></div>
   <div class="modal-content">
     <button class="modal-close" onclick="closeWaitlist()">✕</button>
-    <h3>Join TalkSift Waitlist</h3>
+    <h3>Join Waitlist for Windows & Mobile</h3>
     <p>Tell us which platform you want, and we'll notify you when it's ready.</p>
     
     <form id="waitlist-form" onsubmit="submitWaitlist(event)">
