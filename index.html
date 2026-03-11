@@ -515,8 +515,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
         <button onclick="switchLang('en')" id="lang-en" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:600; background:var(--accent); color:#fff; font-family:inherit;">EN</button>
         <button onclick="switchLang('zh')" id="lang-zh" style="padding:4px 10px; border:none; cursor:pointer; font-size:0.8rem; font-weight:500; background:var(--surface); color:var(--text-muted); font-family:inherit;">中文</button>
       </div>
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="nav-cta" data-i18n="nav.downloadMac">⬇ Mac</a>
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="nav-cta nav-cta-win" data-i18n-html="nav.downloadWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Win</a>
+      <a href="https://api.talksift.app/download/mac" class="nav-cta" data-i18n="nav.downloadMac">⬇ Mac</a>
+      <a href="#" onclick="openWaitlist(); return false;" class="nav-cta nav-cta-win" data-i18n="nav.joinWaitlist">Join Waitlist</a>
     </div>
   </div>
 </nav>
@@ -528,8 +528,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <p class="sub" data-i18n="hero.subtitle">Just talk. TalkSift removes your filler words, false starts, and rambling — and gives you clean, ready-to-use text in seconds.</p>
     <div id="waitlist">
       <div class="hero-actions">
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-primary" data-i18n="hero.downloadMac">⬇ Download for Mac</a>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="btn-secondary js-windows-download" data-install-target="windows" data-i18n-html="hero.downloadWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>Download for Windows</span></a>
+        <a href="https://api.talksift.app/download/mac" class="btn-primary" data-i18n="hero.downloadMac">⬇ Download for Mac</a>
+        <a href="#" onclick="openWaitlist(); return false;" class="btn-secondary" data-i18n="hero.joinWaitlist">Join Waitlist</a>
       </div>
       <p style="font-size:12px; color:var(--text-muted); margin-top:10px;" data-i18n-html="hero.firstTimeHint">First time? See <a href="#install-guide" style="color:var(--accent);">installation guide</a> below.</p>
     </div>
@@ -677,8 +677,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.free.f3">Filler removal + corrections</li>
           <li data-i18n="pricing.free.f4">Clipboard output</li>
         </ul>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-outline" data-i18n="pricing.free.btnMac">⬇ Mac</a>
-        <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="btn-outline" data-i18n-html="pricing.free.btnWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span> Windows</a>
+        <a href="https://api.talksift.app/download/mac" class="btn-outline" data-i18n="pricing.free.btnMac">⬇ Mac</a>
+        <a href="#" onclick="openWaitlist(); return false;" class="btn-outline" data-i18n="pricing.free.joinWaitlist">Join Waitlist</a>
       </div>
       <div class="price-card">
         <h3 data-i18n="pricing.monthly.name">Pro Monthly</h3>
@@ -907,8 +907,8 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
     <h2 data-i18n="cta.title">Stop typing what you could just say.</h2>
     <p data-i18n="cta.subtitle">Download TalkSift and start talking.</p>
     <div class="hero-actions" style="margin-bottom:0;">
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest/download/TalkSift-v0.3.4.dmg" class="btn-primary" data-i18n="cta.btnMac">⬇ Download for Mac</a>
-      <a href="https://github.com/yinshanlake/talksift-releases/releases/latest" class="btn-secondary" data-i18n-html="cta.btnWin"><span class="windows-icon" aria-hidden="true"><svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M1 2.2 7.2 1.3v5.8H1V2.2Zm7.7-1 6.3-.9v6.8H8.7V1.2ZM1 8.1h6.2v5.8L1 13V8.1Zm7.7 0H15V15l-6.3-.9V8.1Z"/></svg></span><span>Download for Windows</span></a>
+      <a href="https://api.talksift.app/download/mac" class="btn-primary" data-i18n="cta.btnMac">⬇ Download for Mac</a>
+      <a href="#" onclick="openWaitlist(); return false;" class="btn-secondary" data-i18n="cta.joinWaitlist">Join Waitlist</a>
     </div>
   </div>
 </section>
@@ -1325,5 +1325,182 @@ setInstallTab('mac');
   }
 })();
 </script>
+
+<!-- Waitlist Modal -->
+<div id="waitlist-modal" class="modal" style="display:none;">
+  <div class="modal-overlay" onclick="closeWaitlist()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeWaitlist()">✕</button>
+    <h3>Join TalkSift Waitlist</h3>
+    <p>Tell us which platform you want, and we'll notify you when it's ready.</p>
+    
+    <form id="waitlist-form" onsubmit="submitWaitlist(event)">
+      <input type="email" id="waitlist-email" placeholder="Your email" required>
+      
+      <div class="platform-options">
+        <label>
+          <input type="checkbox" name="platform" value="windows"> Windows Desktop
+        </label>
+        <label>
+          <input type="checkbox" name="platform" value="ios"> iOS Mobile
+        </label>
+        <label>
+          <input type="checkbox" name="platform" value="android"> Android Mobile
+        </label>
+      </div>
+      
+      <button type="submit" class="btn-primary">Submit</button>
+      <div id="waitlist-message" style="display:none;"></div>
+    </form>
+  </div>
+</div>
+
+<style>
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  position: relative;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.modal-content p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.modal-content input[type="email"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.platform-options {
+  margin-bottom: 1.5rem;
+}
+
+.platform-options label {
+  display: flex;
+  align-items: center;
+  margin: 0.75rem 0;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.platform-options input[type="checkbox"] {
+  margin-right: 0.75rem;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+#waitlist-message {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.modal-content .btn-primary {
+  width: 100%;
+  margin: 0;
+}
+</style>
+
+<script>
+function openWaitlist() {
+  document.getElementById('waitlist-modal').style.display = 'flex';
+}
+
+function closeWaitlist() {
+  document.getElementById('waitlist-modal').style.display = 'none';
+}
+
+async function submitWaitlist(e) {
+  e.preventDefault();
+  const email = document.getElementById('waitlist-email').value;
+  const platforms = Array.from(document.querySelectorAll('input[name="platform"]:checked'))
+    .map(cb => cb.value);
+  
+  if (platforms.length === 0) {
+    alert('Please select at least one platform');
+    return;
+  }
+  
+  const messageDiv = document.getElementById('waitlist-message');
+  
+  try {
+    const response = await fetch('https://api.talksift.app/waitlist/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, platforms })
+    });
+    
+    if (response.ok) {
+      messageDiv.textContent = '✅ Thank you for joining!';
+      messageDiv.style.display = 'block';
+      messageDiv.style.background = 'var(--accent-subtle)';
+      messageDiv.style.color = 'var(--accent)';
+      document.getElementById('waitlist-form').reset();
+      setTimeout(closeWaitlist, 2000);
+    } else {
+      throw new Error('Failed');
+    }
+  } catch (err) {
+    messageDiv.textContent = '❌ Something went wrong, please try again.';
+    messageDiv.style.display = 'block';
+    messageDiv.style.background = 'rgba(220, 38, 38, 0.1)';
+    messageDiv.style.color = '#dc2626';
+  }
+}
+</script>
+
 </body>
 </html>
