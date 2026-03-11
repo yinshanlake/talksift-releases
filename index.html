@@ -690,7 +690,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.monthly.f3">Priority processing</li>
           <li data-i18n="pricing.monthly.f4">Direct app integration</li>
         </ul>
-        <a href="#" class="btn-outline paddle_button" data-price-id="pri_01kjmrmm580rfqnqs1r47m1vpr" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;" data-i18n="pricing.subscribe">Subscribe</a>
+        <a href="#" class="btn-outline paddle_button" data-price-id="pri_01kjmrmm580rfqnqs1r47m1vpr" data-i18n="pricing.subscribe">Subscribe</a>
       </div>
       <div class="price-card featured" data-popular="POPULAR">
         <h3 data-i18n="pricing.annual.name">Pro Annual</h3>
@@ -702,7 +702,7 @@ footer .links a:hover { color: var(--accent); text-decoration: none; }
           <li data-i18n="pricing.annual.f3">Priority support</li>
           <li data-i18n="pricing.annual.f4">Early access to new features</li>
         </ul>
-        <a href="#" class="btn-primary paddle_button" data-price-id="pri_01kjmrmn72w66qgxb9m2be9mwq" onclick="Paddle.Checkout.open({items:[{priceId:this.dataset.priceId,quantity:1}]});return false;" data-i18n="pricing.subscribe">Subscribe</a>
+        <a href="#" class="btn-primary paddle_button" data-price-id="pri_01kjmrmn72w66qgxb9m2be9mwq" data-i18n="pricing.subscribe">Subscribe</a>
       </div>
       </div>
     </div>
@@ -945,6 +945,40 @@ document.querySelectorAll('.faq-q').forEach(btn => {
       ans.style.maxHeight = ans.scrollHeight + 'px';
     }
   });
+});
+
+// Paddle subscription via backend
+async function subscribe(priceId) {
+  try {
+    const response = await fetch('https://api.talksift.app/paddle/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ priceId })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    if (data.checkoutUrl) {
+      window.location.href = data.checkoutUrl;
+    } else {
+      throw new Error('No checkout URL returned');
+    }
+  } catch (err) {
+    console.error('Subscription error:', err);
+    alert('订阅失败，请稍后重试 / Subscription failed, please try again later');
+  }
+}
+
+// Update all Paddle subscription buttons
+document.querySelectorAll('.paddle_button').forEach(btn => {
+  btn.onclick = function(e) {
+    e.preventDefault();
+    subscribe(this.dataset.priceId);
+    return false;
+  };
 });
 
 // Waitlist
